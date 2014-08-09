@@ -14,3 +14,31 @@ Getting Started
 Then you can do something like `nodemon --watch client server.js`
 this will watch the `client` dir and `server.js` file for changes.
 
+Current Structure
+-----------------
+    client
+    ├── dist
+    └── src
+        ├── cart
+        │   ├── cartCtrl.js
+        │   ├── index.js
+        │   └── scss
+        ├── common
+        ├── scss
+        │   └── style.scss
+        └── sign-in
+            ├── index.js
+            └── scss
+    server
+    ├── config.js
+    └── routes.js
+    tasks
+    ├── build.js
+    ├── default.js
+    ├── scripts
+    │   ├── browserify.js
+    │   ├── lint.js
+    │   ├── uglify.js
+    │   └── vendor.js
+    └── styles
+        └── compass.js
