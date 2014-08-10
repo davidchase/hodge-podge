@@ -4,3 +4,4 @@ sublime-gulp.log
 .sublime-gulp.cache
 *.sass-cache/*
 npm-debug.log
+tmp/log*
