@@ -1,0 +1,31 @@
+{
+    "event": "request",
+    "timestamp": 1407685780612,
+    "id": "1407685780612-3773-20753",
+    "instance": "http://localhost:3000",
+    "labels": [],
+    "method": "get",
+    "path": "/hello",
+    "query": {},
+    "source": {
+        "remoteAddress": "127.0.0.1",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36"
+    },
+    "responseTime": 12,
+    "statusCode": 200
+} {
+    "event": "request",
+    "timestamp": 1407685818214,
+    "id": "1407685818214-3773-33474",
+    "instance": "http://localhost:3000",
+    "labels": [],
+    "method": "get",
+    "path": "/",
+    "query": {},
+    "source": {
+        "remoteAddress": "127.0.0.1",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36"
+    },
+    "responseTime": 2,
+    "statusCode": 200
+}
