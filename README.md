@@ -31,6 +31,7 @@ Current Structure
             └── scss
     server
     ├── config.js
+    ├── plugins.js
     └── routes.js
     tasks
     ├── build.js
