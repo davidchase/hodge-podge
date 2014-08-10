@@ -4,7 +4,7 @@ module.exports = function(server) {
     var options = {
         subscribers: {
             'console': ['ops', 'request', 'log', 'error'],
-            'tmp/logs/': ['request', 'log'],
+            'tmp/logs/': ['ops', 'request', 'log', 'error'],
         }
     };
 
@@ -13,8 +13,9 @@ module.exports = function(server) {
         options: options
     }, function(err) {
         if (err) {
-            console.log(err);
-            return;
+            if (err) {
+                throw err;
+            }
         }
     });
 };

@@ -4,6 +4,4 @@ sublime-gulp.log
 .sublime-gulp.cache
 *.sass-cache/*
 npm-debug.log
-pids
-results
-tmp/logs/[0-9]
+tmp/log*
