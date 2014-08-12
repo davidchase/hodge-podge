@@ -8,6 +8,9 @@ module.exports = {
     port: parseInt(process.env.PORT, 10) || 3000,
     hapi: {
         options: {
+            cache: {
+                engine: require('catbox-memory')
+            },
             views: {
                 engines: {
                     html: require('handlebars')

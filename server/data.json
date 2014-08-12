@@ -1,0 +1,45 @@
+{
+    "_id": "53ea5230adc9cf5ef88d1625",
+    "index": 0,
+    "guid": "a00ac3de-b054-4eb1-869e-31336067a676",
+    "isActive": true,
+    "balance": "$3,313.08",
+    "picture": "http://placeape.com/200/200",
+    "age": 38,
+    "eyeColor": "brown",
+    "name": "Graves Burch",
+    "gender": "male",
+    "company": "ZOARERE",
+    "email": "gravesburch@zoarere.com",
+    "phone": "+1 (878) 414-2842",
+    "address": "394 Reeve Place, Avoca, Indiana, 8902",
+    "about": "Consectetur duis officia consectetur labore officia esse eu enim enim culpa ut veniam non sit. Duis velit eiusmod consectetur ullamco magna. Officia occaecat cupidatat nulla pariatur duis. Anim veniam cupidatat aute labore reprehenderit velit enim adipisicing anim est consequat mollit deserunt.\r\n",
+    "registered": "2014-07-06T06:21:13 +04:00",
+    "latitude": -38.749787,
+    "longitude": 110.359176,
+    "tags": [
+    "consectetur",
+    "minim",
+    "occaecat",
+    "non",
+    "fugiat",
+    "ea",
+    "elit"
+  ],
+    "friends": [
+        {
+            "id": 0,
+            "name": "Suzanne Fitzpatrick"
+    },
+        {
+            "id": 1,
+            "name": "Lynn Kennedy"
+    },
+        {
+            "id": 2,
+            "name": "Booker Delacruz"
+    }
+  ],
+    "greeting": "Hello, Graves Burch! You have 8 unread messages.",
+    "favoriteFruit": "banana"
+}

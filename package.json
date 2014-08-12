@@ -1,52 +1,54 @@
 {
-    "name": "hodge-podge",
-    "version": "0.0.2",
-    "description": "Checkout flow with a hapi medium",
-    "main": "server.js",
-    "scripts": {
-        "install": "napa",
-        "start": "node server.js",
-        "test": "./node_modules/karma/bin/karma  test/*.spec.js"
-    },
-    "napa": {},
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/davidchase/hodge-podge.git"
-    },
-    "keywords": [
+  "name": "hodge-podge",
+  "version": "0.0.2",
+  "description": "Checkout flow with a hapi medium",
+  "main": "server.js",
+  "scripts": {
+    "install": "napa",
+    "start": "node server.js",
+    "test": "./node_modules/karma/bin/karma  test/*.spec.js"
+  },
+  "napa": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidchase/hodge-podge.git"
+  },
+  "keywords": [
     "checkout",
     "chart",
     "shipping",
     "flow"
   ],
-    "author": "David Annopolsky <dannopolsky@freepeople.com>",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/davidchase/hodge-podge/issues"
-    },
-    "homepage": "https://github.com/davidchase/hodge-podge",
-    "devDependencies": {
-        "browserify": "^4.2.3",
-        "glob": "^4.0.5",
-        "good": "^2.2.1",
-        "gulp": "^3.8.7",
-        "gulp-compass": "^1.2.0",
-        "gulp-jshint": "^1.8.4",
-        "gulp-uglify": "^0.3.1",
-        "handlebars": "^2.0.0-alpha.4",
-        "hapi": "^6.4.0",
-        "joi": "^4.6.2",
-        "jshint-stylish": "^0.4.0",
-        "karma": "^0.12.21",
-        "karma-chrome-launcher": "^0.1.4",
-        "karma-mocha": "^0.1.7",
-        "karma-phantomjs-launcher": "^0.1.4",
-        "mocha": "^1.21.4",
-        "napa": "^0.4.1",
-        "partialify": "^3.1.1",
-        "should": "^4.0.4",
-        "vinyl-buffer": "0.0.0",
-        "vinyl-source-stream": "^0.1.1",
-        "watchify": "^1.0.1"
-    }
+  "author": "David Annopolsky <dannopolsky@freepeople.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davidchase/hodge-podge/issues"
+  },
+  "homepage": "https://github.com/davidchase/hodge-podge",
+  "devDependencies": {
+    "browserify": "^4.2.3",
+    "catbox-memory": "^1.0.4",
+    "glob": "^4.0.5",
+    "good": "^2.2.1",
+    "gulp": "^3.8.7",
+    "gulp-compass": "^1.2.0",
+    "gulp-jshint": "^1.8.4",
+    "gulp-uglify": "^0.3.1",
+    "handlebars": "^2.0.0-alpha.4",
+    "hapi": "^6.4.0",
+    "joi": "^4.6.2",
+    "jshint-stylish": "^0.4.0",
+    "karma": "^0.12.21",
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-mocha": "^0.1.7",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "mocha": "^1.21.4",
+    "napa": "^0.4.1",
+    "nipple": "^2.5.5",
+    "partialify": "^3.1.1",
+    "should": "^4.0.4",
+    "vinyl-buffer": "0.0.0",
+    "vinyl-source-stream": "^0.1.1",
+    "watchify": "^1.0.1"
+  }
 }

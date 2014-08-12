@@ -3,7 +3,7 @@
 // array of objects for routes
 // later may export a function to
 // add some controllers
-
+var nipple = require('nipple');
 module.exports = function(server) {
     var views = [{
             method: 'GET',
@@ -15,9 +15,25 @@ module.exports = function(server) {
             method: 'GET',
             path: '/basket',
             handler: function(request, reply) {
-            reply.view('./basket/views/index', {
-                    title: 'Basket'
+                reply.proxy({
+                    uri: 'http://localhost:3000/api/data',
+                    onResponse: function(err, res, request, reply) {
+                        if (err) {
+                            return;
+                        }
+                        // Response is a stream :)
+                        // convert to buffer > string > json
+                        nipple.read(res, function(err, body) {
+                            var data = JSON.parse(body.toString());
+                            reply.view('./basket/views/index', {
+                                basket: data
+                            }, {
+                                title: 'Basket'
+                            });
+                        });
+                    }
                 });
+
             }
     },
         {
@@ -33,9 +49,16 @@ module.exports = function(server) {
             path: '/{param*}',
             handler: {
                 directory: {
-                    path: './client/dist/js'
+                    path: './client/dist/'
                 }
             }
+    }, {
+            method: 'GET',
+            path: '/api/data',
+            handler: {
+                file: './server/data.json'
+            }
+
     }];
     return views;
 };
