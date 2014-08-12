@@ -1,0 +1,9 @@
+<div class="basket-sector">
+    <h3>Basket</h3>
+    The Partial: {{> quickPartial }}
+    {{#each basket.items}}
+        <p>Description: {{description}} <strong>Remove</strong></p>
+        <p>Quantity: {{quantity}} </p>
+    {{/each}}
+    <button class="button small re-render">Re-render Page</button>
+</div>

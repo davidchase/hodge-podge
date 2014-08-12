@@ -13,11 +13,12 @@ module.exports = {
             },
             views: {
                 engines: {
-                    html: require('handlebars')
+                    hbs: require('handlebars')
                 },
                 basePath: rootPath,
                 path: './client/src/',
                 layoutPath: './client/src/common/',
+                partialsPath: './client/src/basket/views/',
                 layout: true
             }
         }

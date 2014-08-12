@@ -6,18 +6,18 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var ugilfy = require('gulp-uglify');
 var index = [
-        './client/src/common'
+        './client/src/basket'
         ];
 var libs = require('./vendor').libs;
-var html = require('partialify');
+var html = require('hbsfy');
 
 gulp.task('browserify', function() {
     var bundleStream = browserify({
         entries: index
     });
     bundleStream
-        .external(libs)
-        .transform(html)
+    // .external(libs)
+    .transform(html)
         .bundle()
         .pipe(source('app.js'))
         .pipe(buffer())
