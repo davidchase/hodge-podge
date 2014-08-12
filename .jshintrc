@@ -12,5 +12,8 @@
     "immed": true, // Require immediate invocations to be wrapped in parens e.g. `( function(){}() );`
     "browser": true, // Standard browser globals e.g. `window`, `document`.
     "freeze": true, // Prohibits overwriting prototypes of native objects e.g. Array, Data, etc
-    "multistr": true // Tolerate multi-line strings.
+    "multistr": true, // Tolerate multi-line strings.
+    "globals": {
+        "angular": true
+    }
 }

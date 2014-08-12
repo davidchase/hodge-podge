@@ -11,7 +11,11 @@ module.exports = {
             views: {
                 engines: {
                     html: require('handlebars')
-                }
+                },
+                basePath: rootPath,
+                path: './client/src/',
+                layoutPath: './client/src/common/',
+                layout: true
             }
         }
     }

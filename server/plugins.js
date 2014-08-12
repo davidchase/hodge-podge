@@ -2,8 +2,9 @@
 
 module.exports = function(server) {
     var options = {
+        maxLogSize: 1024 * 1024 * 1024,
         subscribers: {
-            'console': ['ops', 'request', 'log', 'error'],
+            'console': ['request', 'log', 'error'],
             'tmp/logs/': ['ops', 'request', 'log', 'error'],
         }
     };
@@ -13,9 +14,7 @@ module.exports = function(server) {
         options: options
     }, function(err) {
         if (err) {
-            if (err) {
-                throw err;
-            }
+            throw err;
         }
     });
 };
