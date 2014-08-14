@@ -4,8 +4,8 @@
 
 var Hapi = require('hapi');
 var config = require('./server/config');
+var server = new Hapi.Server('localhost', config.port, config.options);
 var routes = require('./server/routes')(server);
-var server = new Hapi.Server('localhost', config.port, config.hapi.options);
 
 // Requires the Good logging plugin
 require('./server/plugins')(server);

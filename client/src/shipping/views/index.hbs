@@ -1,14 +1,9 @@
 <div class="shipping-sector">
-    <h3>About Us</h3>
-    <p>
-        {{basket.about}}
-    </p>
-    <ul>
-        {{#each basket.friends}}
-        <li>
-            {{name}} {{@index}}
-        </li>
-        {{/each}}
-    </ul>
-    <img src="{{basket.picture}}" />
+    <form action="">
+        <label for="firstname">First Name</label>
+        <input type="text" name="firstname">
+        <label for="lastname">Last Name</label>
+        <input type="text" name="lastname">
+        <button type="submit">Send</button>
+    </form>
 </div>

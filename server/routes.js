@@ -4,6 +4,7 @@
 // later may export a function to
 // add some controllers
 var nipple = require('nipple');
+var basketService = require('../client/src/basket/views');
 module.exports = function(server) {
     var views = [{
             method: 'GET',
@@ -15,25 +16,22 @@ module.exports = function(server) {
             method: 'GET',
             path: '/basket',
             handler: function(request, reply) {
-                reply.proxy({
-                    uri: 'http://localhost:3000/api/data',
-                    onResponse: function(err, res, request, reply) {
-                        if (err) {
-                            return;
-                        }
-                        // Response is a stream :)
-                        // convert to buffer > string > json
-                        nipple.read(res, function(err, body) {
-                            var data = JSON.parse(body.toString());
-                            reply.view('./basket/views/index', {
-                                basket: data
-                            }, {
-                                title: 'Basket'
-                            });
-                        });
-                    }
+            basketService.getBasket()
+                .then(function(response) {
+                    reply.view('./basket/views/index', {
+                        basket: response.entity
+                    });
+                })
+                .otherwise(function(response) {
+                    reply('response error: ' + response.entity);
                 });
 
+            nipple.get('http://localhost:3000/api/data', function(err, res, payload) {
+                var data = JSON.parse(payload);
+                reply.view('./basket/views/index', {
+                    basket: data,
+                });
+            });
             }
     },
         {
@@ -46,10 +44,16 @@ module.exports = function(server) {
             }
     }, {
             method: 'GET',
-            path: '/{param*}',
+            path: '/static/{param*}',
             handler: {
                 directory: {
                     path: './client/dist/'
+                }
+            },
+            config: {
+                cache: {
+                    privacy: 'public',
+                    expiresIn: 120000
                 }
             }
     }, {
@@ -59,6 +63,12 @@ module.exports = function(server) {
                 file: './server/data.json'
             }
 
+    }, {
+            method: '*',
+            path: '/{param*}',
+            handler: function(request, reply) {
+                reply('The page you request could not be found').code(404);
+            }
     }];
     return views;
 };

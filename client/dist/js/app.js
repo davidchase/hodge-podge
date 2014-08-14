@@ -1,1 +1,622 @@
-!function e(t,r,n){function a(i,o){if(!r[i]){if(!t[i]){var l="function"==typeof require&&require;if(!o&&l)return l(i,!0);if(s)return s(i,!0);throw new Error("Cannot find module '"+i+"'")}var u=r[i]={exports:{}};t[i][0].call(u.exports,function(e){var r=t[i][1][e];return a(r?r:e)},u,u.exports,e,t,r,n)}return r[i].exports}for(var s="function"==typeof require&&require,i=0;i<n.length;i++)a(n[i]);return a}({1:[function(e){"use strict";e("./views")()},{"./views":3}],2:[function(e,t){var r=e("hbsfy/runtime");t.exports=r.template({1:function(e,t,r,n){var a,s="function",i=this.escapeExpression;return"\n        <p>Description: "+i((a=t.description||e&&e.description,typeof a===s?a.call(e,{name:"description",hash:{},data:n}):a))+" <strong>Remove</strong></p>\n        <p>Quantity: "+i((a=t.quantity||e&&e.quantity,typeof a===s?a.call(e,{name:"quantity",hash:{},data:n}):a))+" </p>\n    "},compiler:[5,">= 2.0.0"],main:function(e,t,r,n){var a,s='<div class="basket-sector">\n    <h3>Basket</h3>\n    The Partial: ';return a=this.invokePartial(r.quickPartial,"quickPartial",e,void 0,t,r,n),(a||0===a)&&(s+=a),s+="\n    ",a=t.each.call(e,(a=e&&e.basket,null==a||a===!1?a:a.items),{name:"each",hash:{},fn:this.program(1,n),inverse:this.noop,data:n}),(a||0===a)&&(s+=a),s+'\n    <button class="button small re-render">Re-render Page</button>\n</div>'},usePartial:!0,useData:!0})},{"hbsfy/runtime":12}],3:[function(e,t){"use strict";t.exports=function(){var t=e("reqwest"),r=e("./index.hbs"),n=e("hbsfy/runtime");n.registerPartial("quickPartial",e("./quickPartial.hbs"));var a=function(){t({url:"http://localhost:3000/api/data",type:"JSON"}).then(function(e){var t=JSON.parse(e.response),n=r({basket:t}),a=document.getElementById("container");a.innerHTML=n}).fail(function(e){throw new Error(e)})},s=document.querySelector(".re-render");s.addEventListener("click",a,!1)}},{"./index.hbs":2,"./quickPartial.hbs":4,"hbsfy/runtime":12,reqwest:13}],4:[function(e,t){var r=e("hbsfy/runtime");t.exports=r.template({compiler:[5,">= 2.0.0"],main:function(){return"<p>\n    I am the included partial\n</p>"},useData:!0})},{"hbsfy/runtime":12}],5:[function(e,t,r){"use strict";var n=e("./handlebars/base"),a=e("./handlebars/safe-string")["default"],s=e("./handlebars/exception")["default"],i=e("./handlebars/utils"),o=e("./handlebars/runtime"),l=function(){var e=new n.HandlebarsEnvironment;return i.extend(e,n),e.SafeString=a,e.Exception=s,e.Utils=i,e.VM=o,e.template=function(t){return o.template(t,e)},e},u=l();u.create=l,r["default"]=u},{"./handlebars/base":6,"./handlebars/exception":7,"./handlebars/runtime":8,"./handlebars/safe-string":9,"./handlebars/utils":10}],6:[function(e,t,r){"use strict";function n(e,t){this.helpers=e||{},this.partials=t||{},a(this)}function a(e){e.registerHelper("helperMissing",function(){if(1===arguments.length)return void 0;throw new o("Missing helper: '"+arguments[arguments.length-1].name+"'")}),e.registerHelper("blockHelperMissing",function(t,r){var n=r.inverse||function(){},a=r.fn;if(f(t)&&(t=t.call(this)),t===!0)return a(this);if(t===!1||null==t)return n(this);if(c(t))return t.length>0?(r.ids&&(r.ids=[r.name]),e.helpers.each(t,r)):n(this);if(r.data&&r.ids){var s=g(r.data);s.contextPath=i.appendContextPath(r.data.contextPath,r.name),r={data:s}}return a(t,r)}),e.registerHelper("each",function(e,t){t||(t=e,e=this);var r,n,a=t.fn,s=t.inverse,o=0,l="";if(t.data&&t.ids&&(n=i.appendContextPath(t.data.contextPath,t.ids[0])+"."),f(e)&&(e=e.call(this)),t.data&&(r=g(t.data)),e&&"object"==typeof e)if(c(e))for(var u=e.length;u>o;o++)r&&(r.index=o,r.first=0===o,r.last=o===e.length-1,n&&(r.contextPath=n+o)),l+=a(e[o],{data:r});else for(var p in e)e.hasOwnProperty(p)&&(r&&(r.key=p,r.index=o,r.first=0===o,n&&(r.contextPath=n+p)),l+=a(e[p],{data:r}),o++);return 0===o&&(l=s(this)),l}),e.registerHelper("if",function(e,t){return f(e)&&(e=e.call(this)),!t.hash.includeZero&&!e||i.isEmpty(e)?t.inverse(this):t.fn(this)}),e.registerHelper("unless",function(t,r){return e.helpers["if"].call(this,t,{fn:r.inverse,inverse:r.fn,hash:r.hash})}),e.registerHelper("with",function(e,t){f(e)&&(e=e.call(this));var r=t.fn;if(!i.isEmpty(e)){if(t.data&&t.ids){var n=g(t.data);n.contextPath=i.appendContextPath(t.data.contextPath,t.ids[0]),t={data:n}}return r(e,t)}}),e.registerHelper("log",function(t,r){var n=r.data&&null!=r.data.level?parseInt(r.data.level,10):1;e.log(n,t)}),e.registerHelper("lookup",function(e,t){return e&&e[t]})}function s(e,t){m.log(e,t)}var i=e("./utils"),o=e("./exception")["default"],l="2.0.0-alpha.4";r.VERSION=l;var u=5;r.COMPILER_REVISION=u;var p={1:"<= 1.0.rc.2",2:"== 1.0.0-rc.3",3:"== 1.0.0-rc.4",4:"== 1.x.x",5:">= 2.0.0"};r.REVISION_CHANGES=p;var c=i.isArray,f=i.isFunction,h=i.toString,d="[object Object]";r.HandlebarsEnvironment=n,n.prototype={constructor:n,logger:m,log:s,registerHelper:function(e,t,r){if(h.call(e)===d){if(r||t)throw new o("Arg not supported with multiple helpers");i.extend(this.helpers,e)}else r&&(t.not=r),this.helpers[e]=t},unregisterHelper:function(e){delete this.helpers[e]},registerPartial:function(e,t){h.call(e)===d?i.extend(this.partials,e):this.partials[e]=t},unregisterPartial:function(e){delete this.partials[e]}};var m={methodMap:{0:"debug",1:"info",2:"warn",3:"error"},DEBUG:0,INFO:1,WARN:2,ERROR:3,level:3,log:function(e,t){if(m.level<=e){var r=m.methodMap[e];"undefined"!=typeof console&&console[r]&&console[r].call(console,t)}}};r.logger=m,r.log=s;var g=function(e){var t=i.extend({},e);return t._parent=e,t};r.createFrame=g},{"./exception":7,"./utils":10}],7:[function(e,t,r){"use strict";function n(e,t){var r;t&&t.firstLine&&(r=t.firstLine,e+=" - "+r+":"+t.firstColumn);for(var n=Error.prototype.constructor.call(this,e),s=0;s<a.length;s++)this[a[s]]=n[a[s]];r&&(this.lineNumber=r,this.column=t.firstColumn)}var a=["description","fileName","lineNumber","message","name","number","stack"];n.prototype=new Error,r["default"]=n},{}],8:[function(e,t,r){"use strict";function n(e){var t=e&&e[0]||1,r=f;if(t!==r){if(r>t){var n=h[r],a=h[t];throw new c("Template was precompiled with an older version of Handlebars than the current runtime. Please update your precompiler to a newer version ("+n+") or downgrade your runtime to an older version ("+a+").")}throw new c("Template was precompiled with a newer version of Handlebars than the current runtime. Please update your runtime to a newer version ("+e[1]+").")}}function a(e,t){if(!t)throw new c("No environment passed to template");t.VM.checkRevision(e.compiler);var r=function(e,r,n,a,s,i,o){a&&(n=p.extend({},n,a));var l=t.VM.invokePartial.call(this,e,r,n,s,i,o);if(null!=l)return l;if(t.compile){var u={helpers:s,partials:i,data:o};return i[r]=t.compile(e,{data:void 0!==o},t),i[r](n,u)}throw new c("The partial "+r+" could not be compiled when running in runtime-only mode")},n={escapeExpression:p.escapeExpression,invokePartial:r,fn:function(t){return e[t]},programs:[],program:function(e,t){var r=this.programs[e],n=this.fn(e);return t?r=i(this,e,n,t):r||(r=this.programs[e]=i(this,e,n)),r},programWithDepth:t.VM.programWithDepth,data:function(e,t){for(;e&&t--;)e=e._parent;return e},merge:function(e,t){var r=e||t;return e&&t&&e!==t&&(r=p.extend({},t,e)),r},noop:t.VM.noop,compilerInfo:e.compiler},a=function(t,r){r=r||{};var s=r.data;return a._setup(r),!r.partial&&e.useData&&(s=u(t,s)),e.main.call(n,t,n.helpers,n.partials,s)};return a._setup=function(r){r.partial?(n.helpers=r.helpers,n.partials=r.partials):(n.helpers=n.merge(r.helpers,t.helpers),e.usePartial&&(n.partials=n.merge(r.partials,t.partials)))},a._child=function(e){return n.programWithDepth(e)},a}function s(e,t){var r=Array.prototype.slice.call(arguments,2),n=this,a=n.fn(e),s=function(e,s){return s=s||{},a.apply(n,[e,n.helpers,n.partials,s.data||t].concat(r))};return s.program=e,s.depth=r.length,s}function i(e,t,r,n){var a=function(t,a){return a=a||{},r.call(e,t,e.helpers,e.partials,a.data||n)};return a.program=t,a.depth=0,a}function o(e,t,r,n,a,s){var i={partial:!0,helpers:n,partials:a,data:s};if(void 0===e)throw new c("The partial "+t+" could not be found");return e instanceof Function?e(r,i):void 0}function l(){return""}function u(e,t){return t&&"root"in t||(t=t?d(t):{},t.root=e),t}var p=e("./utils"),c=e("./exception")["default"],f=e("./base").COMPILER_REVISION,h=e("./base").REVISION_CHANGES,d=e("./base").createFrame;r.checkRevision=n,r.template=a,r.programWithDepth=s,r.program=i,r.invokePartial=o,r.noop=l},{"./base":6,"./exception":7,"./utils":10}],9:[function(e,t,r){"use strict";function n(e){this.string=e}n.prototype.toString=function(){return""+this.string},r["default"]=n},{}],10:[function(e,t,r){"use strict";function n(e){return u[e]||"&amp;"}function a(e){for(var t=1;t<arguments.length;t++)for(var r in arguments[t])Object.prototype.hasOwnProperty.call(arguments[t],r)&&(e[r]=arguments[t][r]);return e}function s(e){return e instanceof l?e.toString():e||0===e?(e=""+e,c.test(e)?e.replace(p,n):e):""}function i(e){return e||0===e?d(e)&&0===e.length?!0:!1:!0}function o(e,t){return(e?e+".":"")+t}var l=e("./safe-string")["default"],u={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#x27;","`":"&#x60;"},p=/[&<>"'`]/g,c=/[&<>"'`]/;r.extend=a;var f=Object.prototype.toString;r.toString=f;var h=function(e){return"function"==typeof e};h(/x/)&&(h=function(e){return"function"==typeof e&&"[object Function]"===f.call(e)});var h;r.isFunction=h;var d=Array.isArray||function(e){return e&&"object"==typeof e?"[object Array]"===f.call(e):!1};r.isArray=d,r.escapeExpression=s,r.isEmpty=i,r.appendContextPath=o},{"./safe-string":9}],11:[function(e,t){t.exports=e("./dist/cjs/handlebars.runtime")},{"./dist/cjs/handlebars.runtime":5}],12:[function(e,t){t.exports=e("handlebars/runtime")["default"]},{"handlebars/runtime":11}],13:[function(require,module,exports){!function(e,t,r){"undefined"!=typeof module&&module.exports?module.exports=r():"function"==typeof define&&define.amd?define(r):t[e]=r()}("reqwest",this,function(){function succeed(e){return httpsRe.test(window.location.protocol)?twoHundo.test(e.status):!!e.response}function handleReadyState(e,t,r){return function(){return e._aborted?r(e.request):void(e.request&&4==e.request[readyState]&&(e.request.onreadystatechange=noop,succeed(e.request)?t(e.request):r(e.request)))}}function setHeaders(e,t){var r,n=t.headers||{};n.Accept=n.Accept||defaultHeaders.accept[t.type]||defaultHeaders.accept["*"];var a="function"==typeof FormData&&t.data instanceof FormData;t.crossOrigin||n[requestedWith]||(n[requestedWith]=defaultHeaders.requestedWith),n[contentType]||a||(n[contentType]=t.contentType||defaultHeaders.contentType);for(r in n)n.hasOwnProperty(r)&&"setRequestHeader"in e&&e.setRequestHeader(r,n[r])}function setCredentials(e,t){"undefined"!=typeof t.withCredentials&&"undefined"!=typeof e.withCredentials&&(e.withCredentials=!!t.withCredentials)}function generalCallback(e){lastValue=e}function urlappend(e,t){return e+(/\?/.test(e)?"&":"?")+t}function handleJsonp(e,t,r,n){var a=uniqid++,s=e.jsonpCallback||"callback",i=e.jsonpCallbackName||reqwest.getcallbackPrefix(a),o=new RegExp("((^|\\?|&)"+s+")=([^&]+)"),l=n.match(o),u=doc.createElement("script"),p=0,c=-1!==navigator.userAgent.indexOf("MSIE 10.0");return l?"?"===l[3]?n=n.replace(o,"$1="+i):i=l[3]:n=urlappend(n,s+"="+i),win[i]=generalCallback,u.type="text/javascript",u.src=n,u.async=!0,"undefined"==typeof u.onreadystatechange||c||(u.htmlFor=u.id="_reqwest_"+a),u.onload=u.onreadystatechange=function(){return u[readyState]&&"complete"!==u[readyState]&&"loaded"!==u[readyState]||p?!1:(u.onload=u.onreadystatechange=null,u.onclick&&u.onclick(),t(lastValue),lastValue=void 0,head.removeChild(u),void(p=1))},head.appendChild(u),{abort:function(){u.onload=u.onreadystatechange=null,r({},"Request is aborted: timeout",{}),lastValue=void 0,head.removeChild(u),p=1}}}function getRequest(e,t){var r,n=this.o,a=(n.method||"GET").toUpperCase(),s="string"==typeof n?n:n.url,i=n.processData!==!1&&n.data&&"string"!=typeof n.data?reqwest.toQueryString(n.data):n.data||null,o=!1;return"jsonp"!=n.type&&"GET"!=a||!i||(s=urlappend(s,i),i=null),"jsonp"==n.type?handleJsonp(n,e,t,s):(r=n.xhr&&n.xhr(n)||xhr(n),r.open(a,s,n.async===!1?!1:!0),setHeaders(r,n),setCredentials(r,n),win[xDomainRequest]&&r instanceof win[xDomainRequest]?(r.onload=e,r.onerror=t,r.onprogress=function(){},o=!0):r.onreadystatechange=handleReadyState(this,e,t),n.before&&n.before(r),o?setTimeout(function(){r.send(i)},200):r.send(i),r)}function Reqwest(e,t){this.o=e,this.fn=t,init.apply(this,arguments)}function setType(e){return e.match("json")?"json":e.match("javascript")?"js":e.match("text")?"html":e.match("xml")?"xml":void 0}function init(o,fn){function complete(e){for(o.timeout&&clearTimeout(self.timeout),self.timeout=null;self._completeHandlers.length>0;)self._completeHandlers.shift()(e)}function success(resp){var type=o.type||setType(resp.getResponseHeader("Content-Type"));resp="jsonp"!==type?self.request:resp;var filteredResponse=globalSetupOptions.dataFilter(resp.responseText,type),r=filteredResponse;try{resp.responseText=r}catch(e){}if(r)switch(type){case"json":try{resp=win.JSON?win.JSON.parse(r):eval("("+r+")")}catch(err){return error(resp,"Could not parse JSON in response",err)}break;case"js":resp=eval(r);break;case"html":resp=r;break;case"xml":resp=resp.responseXML&&resp.responseXML.parseError&&resp.responseXML.parseError.errorCode&&resp.responseXML.parseError.reason?null:resp.responseXML}for(self._responseArgs.resp=resp,self._fulfilled=!0,fn(resp),self._successHandler(resp);self._fulfillmentHandlers.length>0;)resp=self._fulfillmentHandlers.shift()(resp);complete(resp)}function error(e,t,r){for(e=self.request,self._responseArgs.resp=e,self._responseArgs.msg=t,self._responseArgs.t=r,self._erred=!0;self._errorHandlers.length>0;)self._errorHandlers.shift()(e,t,r);complete(e)}this.url="string"==typeof o?o:o.url,this.timeout=null,this._fulfilled=!1,this._successHandler=function(){},this._fulfillmentHandlers=[],this._errorHandlers=[],this._completeHandlers=[],this._erred=!1,this._responseArgs={};var self=this;fn=fn||function(){},o.timeout&&(this.timeout=setTimeout(function(){self.abort()},o.timeout)),o.success&&(this._successHandler=function(){o.success.apply(o,arguments)}),o.error&&this._errorHandlers.push(function(){o.error.apply(o,arguments)}),o.complete&&this._completeHandlers.push(function(){o.complete.apply(o,arguments)}),this.request=getRequest.call(this,success,error)}function reqwest(e,t){return new Reqwest(e,t)}function normalize(e){return e?e.replace(/\r?\n/g,"\r\n"):""}function serial(e,t){var r,n,a,s,i=e.name,o=e.tagName.toLowerCase(),l=function(e){e&&!e.disabled&&t(i,normalize(e.attributes.value&&e.attributes.value.specified?e.value:e.text))};if(!e.disabled&&i)switch(o){case"input":/reset|button|image|file/i.test(e.type)||(r=/checkbox/i.test(e.type),n=/radio/i.test(e.type),a=e.value,(!(r||n)||e.checked)&&t(i,normalize(r&&""===a?"on":a)));break;case"textarea":t(i,normalize(e.value));break;case"select":if("select-one"===e.type.toLowerCase())l(e.selectedIndex>=0?e.options[e.selectedIndex]:null);else for(s=0;e.length&&s<e.length;s++)e.options[s].selected&&l(e.options[s])}}function eachFormElement(){var e,t,r=this,n=function(e,t){var n,a,s;for(n=0;n<t.length;n++)for(s=e[byTag](t[n]),a=0;a<s.length;a++)serial(s[a],r)};for(t=0;t<arguments.length;t++)e=arguments[t],/input|select|textarea/i.test(e.tagName)&&serial(e,r),n(e,["input","select","textarea"])}function serializeQueryString(){return reqwest.toQueryString(reqwest.serializeArray.apply(null,arguments))}function serializeHash(){var e={};return eachFormElement.apply(function(t,r){t in e?(e[t]&&!isArray(e[t])&&(e[t]=[e[t]]),e[t].push(r)):e[t]=r},arguments),e}function buildParams(e,t,r,n){var a,s,i,o=/\[\]$/;if(isArray(t))for(s=0;t&&s<t.length;s++)i=t[s],r||o.test(e)?n(e,i):buildParams(e+"["+("object"==typeof i?s:"")+"]",i,r,n);else if(t&&"[object Object]"===t.toString())for(a in t)buildParams(e+"["+a+"]",t[a],r,n);else n(e,t)}var win=window,doc=document,httpsRe=/^http/,twoHundo=/^(20\d|1223)$/,byTag="getElementsByTagName",readyState="readyState",contentType="Content-Type",requestedWith="X-Requested-With",head=doc[byTag]("head")[0],uniqid=0,callbackPrefix="reqwest_"+ +new Date,lastValue,xmlHttpRequest="XMLHttpRequest",xDomainRequest="XDomainRequest",noop=function(){},isArray="function"==typeof Array.isArray?Array.isArray:function(e){return e instanceof Array},defaultHeaders={contentType:"application/x-www-form-urlencoded",requestedWith:xmlHttpRequest,accept:{"*":"text/javascript, text/html, application/xml, text/xml, */*",xml:"application/xml, text/xml",html:"text/html",text:"text/plain",json:"application/json, text/javascript",js:"application/javascript, text/javascript"}},xhr=function(e){if(e.crossOrigin===!0){var t=win[xmlHttpRequest]?new XMLHttpRequest:null;if(t&&"withCredentials"in t)return t;if(win[xDomainRequest])return new XDomainRequest;throw new Error("Browser does not support cross-origin requests")}return win[xmlHttpRequest]?new XMLHttpRequest:new ActiveXObject("Microsoft.XMLHTTP")},globalSetupOptions={dataFilter:function(e){return e}};return Reqwest.prototype={abort:function(){this._aborted=!0,this.request.abort()},retry:function(){init.call(this,this.o,this.fn)},then:function(e,t){return e=e||function(){},t=t||function(){},this._fulfilled?this._responseArgs.resp=e(this._responseArgs.resp):this._erred?t(this._responseArgs.resp,this._responseArgs.msg,this._responseArgs.t):(this._fulfillmentHandlers.push(e),this._errorHandlers.push(t)),this},always:function(e){return this._fulfilled||this._erred?e(this._responseArgs.resp):this._completeHandlers.push(e),this},fail:function(e){return this._erred?e(this._responseArgs.resp,this._responseArgs.msg,this._responseArgs.t):this._errorHandlers.push(e),this},"catch":function(e){return this.fail(e)}},reqwest.serializeArray=function(){var e=[];return eachFormElement.apply(function(t,r){e.push({name:t,value:r})},arguments),e},reqwest.serialize=function(){if(0===arguments.length)return"";var e,t,r=Array.prototype.slice.call(arguments,0);return e=r.pop(),e&&e.nodeType&&r.push(e)&&(e=null),e&&(e=e.type),t="map"==e?serializeHash:"array"==e?reqwest.serializeArray:serializeQueryString,t.apply(null,r)},reqwest.toQueryString=function(e,t){var r,n,a=t||!1,s=[],i=encodeURIComponent,o=function(e,t){t="function"==typeof t?t():null==t?"":t,s[s.length]=i(e)+"="+i(t)};if(isArray(e))for(n=0;e&&n<e.length;n++)o(e[n].name,e[n].value);else for(r in e)e.hasOwnProperty(r)&&buildParams(r,e[r],a,o);return s.join("&").replace(/%20/g,"+")},reqwest.getcallbackPrefix=function(){return callbackPrefix},reqwest.compat=function(e,t){return e&&(e.type&&(e.method=e.type)&&delete e.type,e.dataType&&(e.type=e.dataType),e.jsonpCallback&&(e.jsonpCallbackName=e.jsonpCallback)&&delete e.jsonpCallback,e.jsonp&&(e.jsonpCallback=e.jsonp)),new Reqwest(e,t)},reqwest.ajaxSetup=function(e){e=e||{};for(var t in e)globalSetupOptions[t]=e[t]},reqwest})},{}]},{},[1]);
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+'use strict';
+var basketService = require('./views');
+var template = require('./views/index.hbs');
+var container = document.getElementById('container');
+basketService.getBasket()
+    .then(function(response) {
+        console.log('response: ', response);
+    })
+    .otherwise(function(response) {
+        console.error('response error: ', response);
+    });
+},{"./views":3,"./views/index.hbs":2}],2:[function(require,module,exports){
+// hbsfy compiled Handlebars template
+var Handlebars = require('hbsfy/runtime');
+module.exports = Handlebars.template({"1":function(depth0,helpers,partials,data) {
+  var helper, functionType="function", escapeExpression=this.escapeExpression;
+  return "\n        <p>Description: "
+    + escapeExpression(((helper = helpers.description || (depth0 && depth0.description)),(typeof helper === functionType ? helper.call(depth0, {"name":"description","hash":{},"data":data}) : helper)))
+    + " <strong>Remove</strong></p>\n        <p>Quantity: "
+    + escapeExpression(((helper = helpers.quantity || (depth0 && depth0.quantity)),(typeof helper === functionType ? helper.call(depth0, {"name":"quantity","hash":{},"data":data}) : helper)))
+    + " </p>\n    ";
+},"compiler":[5,">= 2.0.0"],"main":function(depth0,helpers,partials,data) {
+  var stack1, buffer = "<div class=\"basket-sector\">\n    <h3>Basket</h3>\n    ";
+  stack1 = helpers.each.call(depth0, ((stack1 = (depth0 && depth0.basket)),stack1 == null || stack1 === false ? stack1 : stack1.items), {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  return buffer + "\n    <button class=\"button small re-render\">Re-render Page</button>\n</div>";
+},"useData":true});
+
+},{"hbsfy/runtime":11}],3:[function(require,module,exports){
+'use strict';
+var basketService = function() {
+    this.rest = require('rest');
+    this.mime = require('rest/interceptor/mime');
+    this.errorCode = require('rest/interceptor/errorCode');
+};
+var basketProto = basketService.prototype;
+
+basketProto.getBasket = function() {
+    var client = this.rest.wrap(this.mime).wrap(this.errorCode);
+    return client({
+        path: 'http://localhost:3000/api/dat'
+    });
+};
+
+
+module.exports = new basketService();
+},{"rest":"k9FYYT","rest/interceptor/errorCode":"8OMoax","rest/interceptor/mime":"b+9qBN"}],4:[function(require,module,exports){
+"use strict";
+/*globals Handlebars: true */
+var base = require("./handlebars/base");
+
+// Each of these augment the Handlebars object. No need to setup here.
+// (This is done to easily share code between commonjs and browse envs)
+var SafeString = require("./handlebars/safe-string")["default"];
+var Exception = require("./handlebars/exception")["default"];
+var Utils = require("./handlebars/utils");
+var runtime = require("./handlebars/runtime");
+
+// For compatibility and usage outside of module systems, make the Handlebars object a namespace
+var create = function() {
+  var hb = new base.HandlebarsEnvironment();
+
+  Utils.extend(hb, base);
+  hb.SafeString = SafeString;
+  hb.Exception = Exception;
+  hb.Utils = Utils;
+
+  hb.VM = runtime;
+  hb.template = function(spec) {
+    return runtime.template(spec, hb);
+  };
+
+  return hb;
+};
+
+var Handlebars = create();
+Handlebars.create = create;
+
+exports["default"] = Handlebars;
+},{"./handlebars/base":5,"./handlebars/exception":6,"./handlebars/runtime":7,"./handlebars/safe-string":8,"./handlebars/utils":9}],5:[function(require,module,exports){
+"use strict";
+var Utils = require("./utils");
+var Exception = require("./exception")["default"];
+
+var VERSION = "2.0.0-alpha.4";
+exports.VERSION = VERSION;var COMPILER_REVISION = 5;
+exports.COMPILER_REVISION = COMPILER_REVISION;
+var REVISION_CHANGES = {
+  1: '<= 1.0.rc.2', // 1.0.rc.2 is actually rev2 but doesn't report it
+  2: '== 1.0.0-rc.3',
+  3: '== 1.0.0-rc.4',
+  4: '== 1.x.x',
+  5: '>= 2.0.0'
+};
+exports.REVISION_CHANGES = REVISION_CHANGES;
+var isArray = Utils.isArray,
+    isFunction = Utils.isFunction,
+    toString = Utils.toString,
+    objectType = '[object Object]';
+
+function HandlebarsEnvironment(helpers, partials) {
+  this.helpers = helpers || {};
+  this.partials = partials || {};
+
+  registerDefaultHelpers(this);
+}
+
+exports.HandlebarsEnvironment = HandlebarsEnvironment;HandlebarsEnvironment.prototype = {
+  constructor: HandlebarsEnvironment,
+
+  logger: logger,
+  log: log,
+
+  registerHelper: function(name, fn, inverse) {
+    if (toString.call(name) === objectType) {
+      if (inverse || fn) { throw new Exception('Arg not supported with multiple helpers'); }
+      Utils.extend(this.helpers, name);
+    } else {
+      if (inverse) { fn.not = inverse; }
+      this.helpers[name] = fn;
+    }
+  },
+  unregisterHelper: function(name) {
+    delete this.helpers[name];
+  },
+
+  registerPartial: function(name, str) {
+    if (toString.call(name) === objectType) {
+      Utils.extend(this.partials,  name);
+    } else {
+      this.partials[name] = str;
+    }
+  },
+  unregisterPartial: function(name) {
+    delete this.partials[name];
+  }
+};
+
+function registerDefaultHelpers(instance) {
+  instance.registerHelper('helperMissing', function(/* [args, ]options */) {
+    if(arguments.length === 1) {
+      // A missing field in a {{foo}} constuct.
+      return undefined;
+    } else {
+      // Someone is actually trying to call something, blow up.
+      throw new Exception("Missing helper: '" + arguments[arguments.length-1].name + "'");
+    }
+  });
+
+  instance.registerHelper('blockHelperMissing', function(context, options) {
+    var inverse = options.inverse || function() {}, fn = options.fn;
+
+    if (isFunction(context)) { context = context.call(this); }
+
+    if(context === true) {
+      return fn(this);
+    } else if(context === false || context == null) {
+      return inverse(this);
+    } else if (isArray(context)) {
+      if(context.length > 0) {
+        if (options.ids) {
+          options.ids = [options.name];
+        }
+
+        return instance.helpers.each(context, options);
+      } else {
+        return inverse(this);
+      }
+    } else {
+      if (options.data && options.ids) {
+        var data = createFrame(options.data);
+        data.contextPath = Utils.appendContextPath(options.data.contextPath, options.name);
+        options = {data: data};
+      }
+
+      return fn(context, options);
+    }
+  });
+
+  instance.registerHelper('each', function(context, options) {
+    // Allow for {{#each}}
+    if (!options) {
+      options = context;
+      context = this;
+    }
+
+    var fn = options.fn, inverse = options.inverse;
+    var i = 0, ret = "", data;
+
+    var contextPath;
+    if (options.data && options.ids) {
+      contextPath = Utils.appendContextPath(options.data.contextPath, options.ids[0]) + '.';
+    }
+
+    if (isFunction(context)) { context = context.call(this); }
+
+    if (options.data) {
+      data = createFrame(options.data);
+    }
+
+    if(context && typeof context === 'object') {
+      if (isArray(context)) {
+        for(var j = context.length; i<j; i++) {
+          if (data) {
+            data.index = i;
+            data.first = (i === 0);
+            data.last  = (i === (context.length-1));
+
+            if (contextPath) {
+              data.contextPath = contextPath + i;
+            }
+          }
+          ret = ret + fn(context[i], { data: data });
+        }
+      } else {
+        for(var key in context) {
+          if(context.hasOwnProperty(key)) {
+            if(data) {
+              data.key = key;
+              data.index = i;
+              data.first = (i === 0);
+
+              if (contextPath) {
+                data.contextPath = contextPath + key;
+              }
+            }
+            ret = ret + fn(context[key], {data: data});
+            i++;
+          }
+        }
+      }
+    }
+
+    if(i === 0){
+      ret = inverse(this);
+    }
+
+    return ret;
+  });
+
+  instance.registerHelper('if', function(conditional, options) {
+    if (isFunction(conditional)) { conditional = conditional.call(this); }
+
+    // Default behavior is to render the positive path if the value is truthy and not empty.
+    // The `includeZero` option may be set to treat the condtional as purely not empty based on the
+    // behavior of isEmpty. Effectively this determines if 0 is handled by the positive path or negative.
+    if ((!options.hash.includeZero && !conditional) || Utils.isEmpty(conditional)) {
+      return options.inverse(this);
+    } else {
+      return options.fn(this);
+    }
+  });
+
+  instance.registerHelper('unless', function(conditional, options) {
+    return instance.helpers['if'].call(this, conditional, {fn: options.inverse, inverse: options.fn, hash: options.hash});
+  });
+
+  instance.registerHelper('with', function(context, options) {
+    if (isFunction(context)) { context = context.call(this); }
+
+    var fn = options.fn;
+
+    if (!Utils.isEmpty(context)) {
+      if (options.data && options.ids) {
+        var data = createFrame(options.data);
+        data.contextPath = Utils.appendContextPath(options.data.contextPath, options.ids[0]);
+        options = {data:data};
+      }
+
+      return fn(context, options);
+    }
+  });
+
+  instance.registerHelper('log', function(context, options) {
+    var level = options.data && options.data.level != null ? parseInt(options.data.level, 10) : 1;
+    instance.log(level, context);
+  });
+
+  instance.registerHelper('lookup', function(obj, field, options) {
+    return obj && obj[field];
+  });
+}
+
+var logger = {
+  methodMap: { 0: 'debug', 1: 'info', 2: 'warn', 3: 'error' },
+
+  // State enum
+  DEBUG: 0,
+  INFO: 1,
+  WARN: 2,
+  ERROR: 3,
+  level: 3,
+
+  // can be overridden in the host environment
+  log: function(level, obj) {
+    if (logger.level <= level) {
+      var method = logger.methodMap[level];
+      if (typeof console !== 'undefined' && console[method]) {
+        console[method].call(console, obj);
+      }
+    }
+  }
+};
+exports.logger = logger;
+function log(level, obj) { logger.log(level, obj); }
+
+exports.log = log;var createFrame = function(object) {
+  var frame = Utils.extend({}, object);
+  frame._parent = object;
+  return frame;
+};
+exports.createFrame = createFrame;
+},{"./exception":6,"./utils":9}],6:[function(require,module,exports){
+"use strict";
+
+var errorProps = ['description', 'fileName', 'lineNumber', 'message', 'name', 'number', 'stack'];
+
+function Exception(message, node) {
+  var line;
+  if (node && node.firstLine) {
+    line = node.firstLine;
+
+    message += ' - ' + line + ':' + node.firstColumn;
+  }
+
+  var tmp = Error.prototype.constructor.call(this, message);
+
+  // Unfortunately errors are not enumerable in Chrome (at least), so `for prop in tmp` doesn't work.
+  for (var idx = 0; idx < errorProps.length; idx++) {
+    this[errorProps[idx]] = tmp[errorProps[idx]];
+  }
+
+  if (line) {
+    this.lineNumber = line;
+    this.column = node.firstColumn;
+  }
+}
+
+Exception.prototype = new Error();
+
+exports["default"] = Exception;
+},{}],7:[function(require,module,exports){
+"use strict";
+var Utils = require("./utils");
+var Exception = require("./exception")["default"];
+var COMPILER_REVISION = require("./base").COMPILER_REVISION;
+var REVISION_CHANGES = require("./base").REVISION_CHANGES;
+var createFrame = require("./base").createFrame;
+
+function checkRevision(compilerInfo) {
+  var compilerRevision = compilerInfo && compilerInfo[0] || 1,
+      currentRevision = COMPILER_REVISION;
+
+  if (compilerRevision !== currentRevision) {
+    if (compilerRevision < currentRevision) {
+      var runtimeVersions = REVISION_CHANGES[currentRevision],
+          compilerVersions = REVISION_CHANGES[compilerRevision];
+      throw new Exception("Template was precompiled with an older version of Handlebars than the current runtime. "+
+            "Please update your precompiler to a newer version ("+runtimeVersions+") or downgrade your runtime to an older version ("+compilerVersions+").");
+    } else {
+      // Use the embedded version info since the runtime doesn't know about this revision yet
+      throw new Exception("Template was precompiled with a newer version of Handlebars than the current runtime. "+
+            "Please update your runtime to a newer version ("+compilerInfo[1]+").");
+    }
+  }
+}
+
+exports.checkRevision = checkRevision;// TODO: Remove this line and break up compilePartial
+
+function template(templateSpec, env) {
+  if (!env) {
+    throw new Exception("No environment passed to template");
+  }
+
+  // Note: Using env.VM references rather than local var references throughout this section to allow
+  // for external users to override these as psuedo-supported APIs.
+  env.VM.checkRevision(templateSpec.compiler);
+
+  var invokePartialWrapper = function(partial, name, context, hash, helpers, partials, data) {
+    if (hash) {
+      context = Utils.extend({}, context, hash);
+    }
+
+    var result = env.VM.invokePartial.call(this, partial, name, context, helpers, partials, data);
+    if (result != null) { return result; }
+
+    if (env.compile) {
+      var options = { helpers: helpers, partials: partials, data: data };
+      partials[name] = env.compile(partial, { data: data !== undefined }, env);
+      return partials[name](context, options);
+    } else {
+      throw new Exception("The partial " + name + " could not be compiled when running in runtime-only mode");
+    }
+  };
+
+  // Just add water
+  var container = {
+    escapeExpression: Utils.escapeExpression,
+    invokePartial: invokePartialWrapper,
+
+    fn: function(i) {
+      return templateSpec[i];
+    },
+
+    programs: [],
+    program: function(i, data) {
+      var programWrapper = this.programs[i],
+          fn = this.fn(i);
+      if(data) {
+        programWrapper = program(this, i, fn, data);
+      } else if (!programWrapper) {
+        programWrapper = this.programs[i] = program(this, i, fn);
+      }
+      return programWrapper;
+    },
+    programWithDepth: env.VM.programWithDepth,
+
+    data: function(data, depth) {
+      while (data && depth--) {
+        data = data._parent;
+      }
+      return data;
+    },
+    merge: function(param, common) {
+      var ret = param || common;
+
+      if (param && common && (param !== common)) {
+        ret = Utils.extend({}, common, param);
+      }
+
+      return ret;
+    },
+
+    noop: env.VM.noop,
+    compilerInfo: templateSpec.compiler
+  };
+
+  var ret = function(context, options) {
+    options = options || {};
+    var helpers,
+        partials,
+        data = options.data;
+
+    ret._setup(options);
+    if (!options.partial && templateSpec.useData) {
+      data = initData(context, data);
+    }
+    return templateSpec.main.call(container, context, container.helpers, container.partials, data);
+  };
+
+  ret._setup = function(options) {
+    if (!options.partial) {
+      container.helpers = container.merge(options.helpers, env.helpers);
+
+      if (templateSpec.usePartial) {
+        container.partials = container.merge(options.partials, env.partials);
+      }
+    } else {
+      container.helpers = options.helpers;
+      container.partials = options.partials;
+    }
+  };
+
+  ret._child = function(i) {
+    return container.programWithDepth(i);
+  };
+  return ret;
+}
+
+exports.template = template;function programWithDepth(i, data /*, $depth */) {
+  /*jshint -W040 */
+  var args = Array.prototype.slice.call(arguments, 2),
+      container = this,
+      fn = container.fn(i);
+
+  var prog = function(context, options) {
+    options = options || {};
+
+    return fn.apply(container, [context, container.helpers, container.partials, options.data || data].concat(args));
+  };
+  prog.program = i;
+  prog.depth = args.length;
+  return prog;
+}
+
+exports.programWithDepth = programWithDepth;function program(container, i, fn, data) {
+  var prog = function(context, options) {
+    options = options || {};
+
+    return fn.call(container, context, container.helpers, container.partials, options.data || data);
+  };
+  prog.program = i;
+  prog.depth = 0;
+  return prog;
+}
+
+exports.program = program;function invokePartial(partial, name, context, helpers, partials, data) {
+  var options = { partial: true, helpers: helpers, partials: partials, data: data };
+
+  if(partial === undefined) {
+    throw new Exception("The partial " + name + " could not be found");
+  } else if(partial instanceof Function) {
+    return partial(context, options);
+  }
+}
+
+exports.invokePartial = invokePartial;function noop() { return ""; }
+
+exports.noop = noop;function initData(context, data) {
+  if (!data || !('root' in data)) {
+    data = data ? createFrame(data) : {};
+    data.root = context;
+  }
+  return data;
+}
+},{"./base":5,"./exception":6,"./utils":9}],8:[function(require,module,exports){
+"use strict";
+// Build out our basic SafeString type
+function SafeString(string) {
+  this.string = string;
+}
+
+SafeString.prototype.toString = function() {
+  return "" + this.string;
+};
+
+exports["default"] = SafeString;
+},{}],9:[function(require,module,exports){
+"use strict";
+/*jshint -W004 */
+var SafeString = require("./safe-string")["default"];
+
+var escape = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&#x27;",
+  "`": "&#x60;"
+};
+
+var badChars = /[&<>"'`]/g;
+var possible = /[&<>"'`]/;
+
+function escapeChar(chr) {
+  return escape[chr] || "&amp;";
+}
+
+function extend(obj /* , ...source */) {
+  for (var i = 1; i < arguments.length; i++) {
+    for (var key in arguments[i]) {
+      if (Object.prototype.hasOwnProperty.call(arguments[i], key)) {
+        obj[key] = arguments[i][key];
+      }
+    }
+  }
+
+  return obj;
+}
+
+exports.extend = extend;var toString = Object.prototype.toString;
+exports.toString = toString;
+// Sourced from lodash
+// https://github.com/bestiejs/lodash/blob/master/LICENSE.txt
+var isFunction = function(value) {
+  return typeof value === 'function';
+};
+// fallback for older versions of Chrome and Safari
+if (isFunction(/x/)) {
+  isFunction = function(value) {
+    return typeof value === 'function' && toString.call(value) === '[object Function]';
+  };
+}
+var isFunction;
+exports.isFunction = isFunction;
+var isArray = Array.isArray || function(value) {
+  return (value && typeof value === 'object') ? toString.call(value) === '[object Array]' : false;
+};
+exports.isArray = isArray;
+
+function escapeExpression(string) {
+  // don't escape SafeStrings, since they're already safe
+  if (string instanceof SafeString) {
+    return string.toString();
+  } else if (!string && string !== 0) {
+    return "";
+  }
+
+  // Force a string conversion as this will be done by the append regardless and
+  // the regex test will do this transparently behind the scenes, causing issues if
+  // an object's to string has escaped characters in it.
+  string = "" + string;
+
+  if(!possible.test(string)) { return string; }
+  return string.replace(badChars, escapeChar);
+}
+
+exports.escapeExpression = escapeExpression;function isEmpty(value) {
+  if (!value && value !== 0) {
+    return true;
+  } else if (isArray(value) && value.length === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+exports.isEmpty = isEmpty;function appendContextPath(contextPath, id) {
+  return (contextPath ? contextPath + '.' : '') + id;
+}
+
+exports.appendContextPath = appendContextPath;
+},{"./safe-string":8}],10:[function(require,module,exports){
+// Create a simple path alias to allow browserify to resolve
+// the runtime on a supported path.
+module.exports = require('./dist/cjs/handlebars.runtime');
+
+},{"./dist/cjs/handlebars.runtime":4}],11:[function(require,module,exports){
+module.exports = require("handlebars/runtime")["default"];
+
+},{"handlebars/runtime":10}]},{},[1])
