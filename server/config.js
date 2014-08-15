@@ -14,6 +14,7 @@ module.exports = {
             engine: require('catbox-memory'),
             expiresAt: '00:24'
         },
+        cors: true,
         views: {
             engines: {
                 hbs: require('handlebars')
