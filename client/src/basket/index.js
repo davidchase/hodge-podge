@@ -1,8 +1,14 @@
 'use strict';
-var basketService = require('../../../server/index.js');
+var basketService = require('../../../server/services/basket/index.js');
 var pubsub = require('../common/pubsub');
 var template = require('./views/index.hbs');
 var container = document.getElementById('container');
+var siteConfig = JSON.parse(container.getAttribute('data-site'));
+var gift = container.querySelector('.gift-wrap');
+
+if (siteConfig && siteConfig.displayGiftWrap) {
+    gift.classList.remove('hide');
+}
 
 container.addEventListener('click', function(e) {
     if (e.target.className.indexOf('re-render') === -1) {

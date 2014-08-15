@@ -1,9 +1,18 @@
+<h2>{{site.name}}</h2>
 <div class="basket-sector">
     <h3>Basket</h3>
+    <div class="right">
+        <h3>Sidebar</h3>
+        <p>Basket total {{basket.pricing.amount}}</p>
+    </div>
     {{#if basket.items}}
         {{#each basket.items}}
+            <a href="#" ><img src="{{imageUrl}}" style="width:8%; height:auto;"></a>
             <p>Description: {{description}} <button data-quantity={{quantity}} data-index={{@index}} class="button tiny alert remove-item">Remove</button></p>
             <p>Quantity: {{quantity}} </p>
+            {{#if giftWrappable}}
+                <p class="gift-wrap hide">Gift wrap available</p>
+            {{/if}}
         {{/each}}
     {{else}}
         <p>Basket Is Empty</p>

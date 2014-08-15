@@ -15,7 +15,7 @@
                 <nav class="top-bar">
                     <secton class="top-bar-section">
                      <ul class="right">
-                      <li><a href="#"><strong class="basket-count">{{quantity}}</strong> - Items in Basket</a></li>
+                      <li><a href="#"><strong class="basket-count">{{totalCartCount}}</strong> - Items in Basket</a></li>
                     </ul>
                     <ul class="left">
                         <li>
@@ -31,7 +31,7 @@
                    
                 </nav>
             </div>
-            <div id="container" class="large-12 columns">
+            <div id="container" class="large-12 columns" data-site="{{siteData}}">
                 {{{ content }}}
             </div>
             <footer class="large-12 columns">

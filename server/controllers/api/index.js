@@ -1,4 +1,8 @@
-{
+'use strict';
+
+var internals = {};
+
+internals.json = {
     "id": "53ea5cb8dab531ea7fe2e33f",
     "index": 0,
     "guid": "4f2f1bb2-dc11-4d6c-87f0-becb9ce94d01",
@@ -33,4 +37,18 @@
         "tax": 0,
         "total": 494.95
     }
-}
+};
+module.exports = {
+    remove: {
+        handler: function(request, reply) {
+            var id = request.params.id;
+            internals.json.items.splice(id, 1);
+            reply(internals.json);
+        }
+    },
+    get: {
+        handler: function(request, reply) {
+            reply.file('./server/data.json');
+        }
+    }
+};
