@@ -1,59 +1,83 @@
 'use strict';
-// For now just exporting
-// array of objects for routes
-// later may export a function to
-// add some controllers
-var nipple = require('nipple');
-var basketService = require('../client/src/basket/views');
+var basketService = require('./index');
+var fs = require('fs');
+var json = {
+    "_id": "53ea5cb8dab531ea7fe2e33f",
+    "index": 0,
+    "guid": "4f2f1bb2-dc11-4d6c-87f0-becb9ce94d01",
+    "isActive": true,
+    "subtotal": "$3,064.73",
+    "items": [
+        {
+            "id": 0,
+            "description": "dolor ex",
+            "quantity": 3
+    },
+        {
+            "id": 1,
+            "description": "fugiat laboris",
+            "quantity": 1
+    },
+        {
+            "id": 2,
+            "description": "amet esse",
+            "quantity": 6
+    }
+  ]
+};
 module.exports = function(server) {
     var views = [{
             method: 'GET',
             path: '/',
             handler: function(request, reply) {
-                reply('Hello, world!');
+                reply.redirect('/basket');
             }
     }, {
             method: 'GET',
             path: '/basket',
-            handler: function(request, reply) {
-            basketService.getBasket()
-                .then(function(response) {
-                    reply.view('./basket/views/index', {
-                        basket: response.entity
-                    });
-                })
-                .otherwise(function(response) {
-                    reply('response error: ' + response.entity);
-                });
-
-            nipple.get('http://localhost:3000/api/data', function(err, res, payload) {
-                var data = JSON.parse(payload);
-                reply.view('./basket/views/index', {
-                    basket: data,
-                });
-            });
+            config: {
+                handler: function(request, reply) {
+                    basketService.getBasket()
+                        .then(function(response) {
+                            reply.view('./basket/views/index', {
+                                basket: response.entity,
+                                quantity: response.entity.quantity
+                            });
+                        })
+                        .otherwise(function(response) {
+                            reply('response error: ' + response.entity);
+                        });
+                },
+                cache: {
+                    privacy: 'public',
+                    expiresAt: '00:24'
+                }
             }
     },
         {
             method: 'GET',
             path: '/shipping',
-            handler: function(request, reply) {
-                reply.view('./shipping/views/index', {
-                    title: 'Shipping'
-                });
+            config: {
+                handler: function(request, reply) {
+                    reply.view('./shipping/views/index');
+                },
+                cache: {
+                    privacy: 'public',
+                    expiresAt: '00:24'
+                }
             }
     }, {
             method: 'GET',
-            path: '/static/{param*}',
+            path: '/static/js/{filename?}',
             handler: {
-                directory: {
-                    path: './client/dist/'
+                file: function(request) {
+                    return './client/dist/js/' + request.params.filename;
                 }
             },
             config: {
                 cache: {
                     privacy: 'public',
-                    expiresIn: 120000
+                    expiresAt: '00:24'
                 }
             }
     }, {
@@ -64,6 +88,15 @@ module.exports = function(server) {
             }
 
     }, {
+            method: 'DELETE',
+            path: '/api/data/{id}',
+            handler: function(request, reply) {
+                var id = request.params.id;
+                json.items.splice(id, 1);
+                reply(json);
+            }
+    },
+        {
             method: '*',
             path: '/{param*}',
             handler: function(request, reply) {

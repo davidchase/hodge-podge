@@ -1,8 +1,12 @@
 <div class="basket-sector">
     <h3>Basket</h3>
-    {{#each basket.items}}
-        <p>Description: {{description}} <strong>Remove</strong></p>
-        <p>Quantity: {{quantity}} </p>
-    {{/each}}
-    <button class="button small re-render">Re-render Page</button>
+    {{#if basket.items}}
+        {{#each basket.items}}
+            <p>Description: {{description}} <button data-quantity={{quantity}} data-index={{@index}} class="button tiny alert remove-item">Remove</button></p>
+            <p>Quantity: {{quantity}} </p>
+        {{/each}}
+    {{else}}
+        <p>Basket Is Empty</p>
+    {{/if}}
+    <button class="button small re-render">Get Items Again</button>
 </div>

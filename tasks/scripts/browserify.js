@@ -6,10 +6,12 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var ugilfy = require('gulp-uglify');
 var index = [
-        './client/src/basket'
+        './client/src/basket',
+        './client/src/common/header'
         ];
 var libs = require('./vendor').libs;
 var html = require('hbsfy');
+var watchify = require('watchify');
 
 gulp.task('browserify', function() {
     var bundleStream = browserify({
@@ -20,9 +22,9 @@ gulp.task('browserify', function() {
         .transform(html)
         .bundle()
         .pipe(source('app.js'))
-    // .pipe(buffer())
-    // .pipe(ugilfy())
-    .pipe(gulp.dest('./client/dist/js'))
+        .pipe(buffer())
+        .pipe(ugilfy())
+        .pipe(gulp.dest('./client/dist/js'))
         .on('error', function(err) {
             console.log(err);
         });

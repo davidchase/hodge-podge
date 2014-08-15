@@ -9,7 +9,15 @@ var basketProto = basketService.prototype;
 basketProto.getBasket = function() {
     var client = this.rest.wrap(this.mime).wrap(this.errorCode);
     return client({
-        path: 'http://localhost:3000/api/dat'
+        path: 'http://localhost:3000/api/data'
+    });
+};
+
+basketProto.removeItem = function(id) {
+    var client = this.rest.wrap(this.mime).wrap(this.errorCode);
+    return client({
+        method: 'DELETE',
+        path: 'http://localhost:3000/api/data/' + id
     });
 };
 

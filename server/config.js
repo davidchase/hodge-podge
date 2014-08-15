@@ -11,7 +11,8 @@ module.exports = {
             request: ['error']
         },
         cache: {
-            engine: require('catbox-memory')
+            engine: require('catbox-memory'),
+            expiresAt: '00:24'
         },
         views: {
             engines: {
