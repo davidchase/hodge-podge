@@ -1,5 +1,5 @@
 'use strict';
-var basketCtrl = require('../../controllers/basket');
+var basketCtrl = require('../controllers');
 module.exports = {
     method: 'GET',
     path: '/basket',

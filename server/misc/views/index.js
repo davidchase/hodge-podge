@@ -1,5 +1,5 @@
 'use strict';
-var miscCtrl = require('../../controllers/misc');
+var miscCtrl = require('../controllers');
 module.exports = {
     index: {
         method: 'GET',

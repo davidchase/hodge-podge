@@ -19,9 +19,8 @@ module.exports = {
             engines: {
                 hbs: require('handlebars')
             },
-            path: './client/src/',
-            layoutPath: './client/src/common/',
-            partialsPath: './client/src/',
+            path: './both/',
+            layoutPath: './both/common/',
             layout: true,
             isCached: true
         }

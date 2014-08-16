@@ -1,5 +1,5 @@
 'use strict';
-var basketService = require('../../services/basket');
+var basketService = require('../services');
 var siteConfig = {
     "FP": {
         "name": "Free People",

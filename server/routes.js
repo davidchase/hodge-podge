@@ -1,8 +1,8 @@
 'use strict';
-var apiCtrl = require('./controllers/api');
-var basketView = require('./views/basket');
-var shippingView = require('./views/shipping');
-var miscView = require('./views/misc');
+var basketView = require('./basket/views');
+var shippingView = require('./shipping/views');
+var miscView = require('./misc/views');
+var apiView = require('./api/views');
 
 module.exports = function(server) {
     var views = [
@@ -11,16 +11,8 @@ module.exports = function(server) {
         miscView.missing,
         miscView.index,
         miscView.staticFiles,
-        {
-            method: 'GET',
-            path: '/api/data',
-            config: apiCtrl.get
-
-    }, {
-            method: 'DELETE',
-            path: '/api/data/{id}',
-            config: apiCtrl.remove
-
-    }];
+        apiView.get,
+        apiView.delete
+    ];
     return views;
 };
