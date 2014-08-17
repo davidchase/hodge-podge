@@ -1,6 +1,10 @@
 @import "main/helpers/functions";
 @import "main/helpers/settings";
 
+body {
+  background: url('http://www.freepeople.com/content/reskins/2014/08-aug/AugustReskin-Header.jpg') no-repeat top center;
+}
+
 #shell {
   height: 100%;
 }
@@ -8,7 +12,6 @@
 .main-content {
   position: relative;
   padding: calc-ems($default-spacing * 4) 0;
-  background-color: $white;
   height: 100%;
   overflow: hidden;
   &.has-searchbar {

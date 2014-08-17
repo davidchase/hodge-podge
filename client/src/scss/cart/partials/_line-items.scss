@@ -2,13 +2,14 @@
 @import "main/helpers/functions";
 @import "main/helpers/mixins";
 
-.basket--product {
-  @include hand-touched-border($htb-light-gray, $light-gray);
-  border: {
-    right: 0;
-    bottom: 0;
-    left: 0;
+.basket--line-items {
+  border-top: solid 1px lighten($light-gray, 20%);
+  &:first-child {
+    border-top: 0;
   }
+}
+
+.basket--product {
   padding-top: calc-ems($default-spacing/2);
   padding-bottom: calc-ems($default-spacing/2);
   > label {

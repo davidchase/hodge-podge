@@ -1,20 +1,51 @@
 <div class="basket-sector">
     <div class="row">
         <div class="medium-8 small-12 columns">
+
             {{#if basket.items}}
                 {{#each basket.items}}
-                    <a href="#">
-                        <img src="{{imageUrl}}" style="width:8%; height:auto;">
-                    </a>
-                    <p>Description: {{description}} <button data-quantity={{quantity}} data-index={{@index}} class="button tiny alert remove-item">Remove</button></p>
-                    <p>Quantity: {{quantity}}</p>
-                    {{#if giftWrappable}}
-                        <p class="gift-wrap hide">Gift wrap available</p>
-                    {{/if}}
+                    <div class="row basket--line-items">
+                        <div class="small-12 columns basket--product">
+                            <div class="row">
+                                <div class="small-3 columns">
+                                    <a href="#">
+                                        <img src="{{imageUrl}}" />
+                                    </a>
+                                </div>
+                                <div class="small-7 columns basket--line-item">
+                                    <h2>{{description}}</h2>
+                                    <span class="price in-basket">$128.00</span>
+                                    <div class="basket--productDetails">
+                                        <div>
+                                            <strong>Color:</strong>
+                                            <span>Black</span>
+                                        </div>
+                                        <div>
+                                            <strong>Size:</strong>
+                                            <span>S</span>
+                                        </div>
+                                        <div>
+                                            <strong>Qty:</strong>
+                                            <span>{{quantity}}</span>
+                                        </div>
+                                        {{#if giftWrappable}}
+                                            <p class="gift-wrap hide">Gift wrap available</p>
+                                        {{/if}}
+                                    </div>
+                                    <div class="basket--controls">
+                                        <button data-index={{@index}} class="button">Edit</button>
+                                        <button data-quantity={{quantity}} data-index={{@index}} class="button tiny alert remove-item">Remove</button>
+                                    </div>
+                                </div>
+                                <div class="small-2 columns"></div>
+                            </div>
+                        </div>
+                    </div>
                 {{/each}}
             {{else}}
                 <p>Basket Is Empty</p>
             {{/if}}
+            <p>&nbsp;</p>
             <button class="button small re-render">Get Items Again</button>
         </div>
         <div class="medium-4 small-12 columns">
