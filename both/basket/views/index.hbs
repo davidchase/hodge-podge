@@ -1,21 +1,87 @@
-<h2>{{site.name}}</h2>
 <div class="basket-sector">
-    <h3>Basket</h3>
-    <div class="right">
-        <h3>Sidebar</h3>
-        <p>Basket total {{basket.pricing.amount}}</p>
-    </div>
-    {{#if basket.items}}
-        {{#each basket.items}}
-            <a href="#" ><img src="{{imageUrl}}" style="width:8%; height:auto;"></a>
-            <p>Description: {{description}} <button data-quantity={{quantity}} data-index={{@index}} class="button tiny alert remove-item">Remove</button></p>
-            <p>Quantity: {{quantity}} </p>
-            {{#if giftWrappable}}
-                <p class="gift-wrap hide">Gift wrap available</p>
+    <div class="row">
+        <div class="medium-8 small-12 columns">
+
+            {{#if basket.items}}
+                {{#each basket.items}}
+                    <div class="row basket--line-items">
+                        <div class="small-12 columns basket--product">
+                            <div class="row">
+                                <div class="small-3 columns">
+                                    <a href="#">
+                                        <img src="{{imageUrl}}" />
+                                    </a>
+                                </div>
+                                <div class="small-7 columns basket--line-item">
+                                    <h2>{{description}}</h2>
+                                    <span class="price in-basket">$128.00</span>
+                                    <div class="basket--productDetails">
+                                        <div>
+                                            <strong>Color:</strong>
+                                            <span>Black</span>
+                                        </div>
+                                        <div>
+                                            <strong>Size:</strong>
+                                            <span>S</span>
+                                        </div>
+                                        <div>
+                                            <strong>Qty:</strong>
+                                            <span>{{quantity}}</span>
+                                        </div>
+                                        {{#if giftWrappable}}
+                                            <p class="gift-wrap hide">Gift wrap available</p>
+                                        {{/if}}
+                                    </div>
+                                    <div class="basket--controls">
+                                        <button data-index={{@index}} class="button">Edit</button>
+                                        <button data-quantity={{quantity}} data-index={{@index}} class="button tiny alert remove-item">Remove</button>
+                                    </div>
+                                </div>
+                                <div class="small-2 columns"></div>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            {{else}}
+                <p>Basket Is Empty</p>
             {{/if}}
-        {{/each}}
-    {{else}}
-        <p>Basket Is Empty</p>
-    {{/if}}
-    <button class="button small re-render">Get Items Again</button>
+            <p>&nbsp;</p>
+            <button class="button small re-render">Get Items Again</button>
+        </div>
+        <div class="medium-4 small-12 columns">
+            <div class="cart--proceed">
+                <div class="text-center">
+                    <button onclick="location='/shipping'">
+                        <span class="more">Proceed to Checkout</span>
+                    </button>
+                    <p>
+                        <em class="serif">or</em>
+                    </p>
+                    <a href="http://www.paypal.com">
+                        <img src="http://www.freepeople.com/resources/_shared/images/layout/mobile/mobile_blue_ckout_PP_194x37.png" alt="Check out with PayPal - The safer, easier way to pay - The safer, easier way to pay" />
+                    </a>
+                </div>
+            </div>
+            <div class="cart--summary">
+                <div class="row light-gray-bg">
+                    <div class="small-6 columns">Shipping:</div>
+                    <div class="small-6 columns text-right">
+                        <strong>$0.00</strong>
+                    </div>
+                </div>
+                <div class="row light-gray-bg">
+                    <div class="small-6 columns">Tax:</div>
+                    <div class="small-6 columns text-right">
+                        <strong>$0.00</strong>
+                    </div>
+                </div>
+                <div class="row light-gray-bg">
+                    <div class="small-6 columns">Total:</div>
+                    <div class="small-6 columns text-right">
+                        <strong>${{basket.pricing.amount}}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

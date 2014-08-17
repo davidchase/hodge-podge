@@ -1,0 +1,32 @@
+@import "main/helpers/settings";
+@import "main/helpers/functions";
+@import "main/helpers/mixins";
+
+.checkout--breadcrumb {
+  position: relative;
+  top: calc-ems(-$default-spacing/1.5);
+  text-align: center;
+
+  & > li {
+    font-style: italic;
+    height: calc-ems($default-spacing*4);
+    background-color: rgba($tan, 0.5);
+    line-height: 400%;
+
+    &.active {
+      background-color: rgba($tan, 1.0);
+
+      a {
+        color: $dark-gray;
+        @include rem-sizer(16px);
+      }
+    }
+
+    a {
+      color: $gray;
+      &:hover {
+        border: 0;
+      }
+    }
+  }
+}

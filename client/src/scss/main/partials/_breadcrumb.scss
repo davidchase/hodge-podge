@@ -1,0 +1,12 @@
+@import "../helpers/settings";
+@import "../helpers/functions";
+
+.breadcrumb {
+  > li {
+    font-style: italic;
+    margin-left: calc-ems($default-spacing/4);
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}

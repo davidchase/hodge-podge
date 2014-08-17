@@ -1,0 +1,78 @@
+@import "main/helpers/settings";
+@import "main/helpers/functions";
+@import "main/helpers/mixins";
+
+.product--details {
+  margin: calc-ems($default-spacing/2 0);
+  padding: calc-ems($default-spacing);
+  background: lighten($light-gray, 20%);
+  h2 {
+    margin-top: 0;
+  }
+}
+
+// details
+.more-details {
+  width: 100%;
+  &:before {
+    content: "More ";
+  }
+}
+
+.more-details--icon {
+  display: inline-block;
+  margin-left: calc-ems($default-spacing/2);
+}
+
+input[type=checkbox].is-toggle:checked ~ .more-details {
+  &:before {
+    content: "Less ";
+  }
+}
+
+// reviews
+.number-of-reviews {
+  display: inline-block;
+  margin-right: calc-ems($default-spacing/2);
+  font-style: normal;
+}
+
+.review-summary {
+  margin: $default-spacing/4 0;
+}
+
+.review-summary--star {
+  display: inline-block;
+  margin-left: calc-ems($default-spacing/4);
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+// fpme
+.product--details--fpme-rainbow-logo {
+  display: inline-block;
+  @include no-pseudo();
+}
+
+.product--details--fpme-pics {
+  margin-top: calc-ems($default-spacing * 2);
+  position: relative;
+  // no style pics overlay
+  .no-pics-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    em {
+      display: block;
+      height: 100%;
+      max-width: 304px;
+      padding-top: 20%;
+      @include transparentBg($white, 0.9);
+    }
+  }
+}

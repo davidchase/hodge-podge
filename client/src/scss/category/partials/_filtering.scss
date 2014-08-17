@@ -1,0 +1,10 @@
+@import "main/helpers/functions";
+@import "main/helpers/settings";
+
+.filtering {
+  padding-bottom: calc-ems($default-spacing*2);
+  .dropdown-trigger {
+    margin-top: calc-ems($default-spacing);
+    padding-left: calc-ems($default-spacing/2);
+  }
+}

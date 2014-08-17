@@ -11,7 +11,6 @@ var index = [
         ];
 var libs = require('./vendor').libs;
 var html = require('hbsfy');
-var watchify = require('watchify');
 
 gulp.task('browserify', function() {
     var bundleStream = browserify({

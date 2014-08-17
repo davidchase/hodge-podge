@@ -7,7 +7,7 @@ gulp.task('lint', function() {
     return gulp.src([
             'gulpfile.js',
             'tasks/**/*.js',
-            'src/scripts/**/*.js',
+            'client/src/**/*.js',
             'test/**/*.js'
         ])
         .pipe(jshint())

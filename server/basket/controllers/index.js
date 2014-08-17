@@ -27,9 +27,5 @@ module.exports = {
             .otherwise(function(response) {
                 reply('response error: ' + response.entity);
             });
-    },
-    cache: {
-        privacy: 'public',
-        expiresAt: '00:24'
     }
 };

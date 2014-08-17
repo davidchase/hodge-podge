@@ -1,0 +1,54 @@
+/**
+ * Styles for h1, h2, h3 tags
+ */
+
+@import '../helpers/settings';
+@import '../helpers/mixins';
+
+.heading {
+  font: {
+    family: $serif;
+    style: italic;
+    weight: 400;
+  }
+  line-height: $base-line-height;
+  letter-spacing: em-calc(0.5px);
+  color: $dark-gray;
+}
+
+// page heading
+h1 {
+  @extend .heading;
+  @include rem-sizer(17px);
+  margin: $default-spacing 0 $default-spacing/2;
+}
+
+// section heading, breadcrumb
+h2 {
+  @extend .heading;
+  @include rem-sizer(15px);
+  margin: $default-spacing 0 $default-spacing/4;
+}
+
+// content heading
+h3 {
+  @extend .heading;
+  @include rem-sizer(13px);
+  margin: $default-spacing 0 $default-spacing/8;
+}
+
+// breadcrumb
+.is-breadcrumb > h1 {
+  @extend .heading;
+  @include rem-sizer(13px);
+  display: inline;
+}
+
+// off-screen menu
+aside.nav-touch {
+  h2 {
+    @extend .heading;
+    @include rem-sizer(17px);
+    margin: $default-spacing 0 $default-spacing/2;
+  }
+}

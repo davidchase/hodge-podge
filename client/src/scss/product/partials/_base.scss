@@ -1,0 +1,58 @@
+@import "main/helpers/settings";
+@import "main/helpers/functions";
+@import "main/helpers/mixins";
+
+.back {
+  font: {
+    style: italic;
+    size: rem-calc($default-spacing);
+  }
+  margin-bottom: em-calc($default-spacing * 2);
+}
+
+.product--image img {
+  margin-top: em-calc($default-spacing);
+  min-width: 304px;
+  min-height: 406px;
+  width: 100%;
+  height: auto;
+}
+
+.product--info {
+  padding-top: calc-ems($default-spacing);
+}
+
+.product--header {
+  h2 {
+    margin-top: 0;
+  }
+}
+
+.product--hearts {
+  display: inline-block;
+  @include fp-border-radius();
+  background: url($htb-pink);
+  min-width: calc-ems(80px);
+  overflow: hidden;
+  padding: 1px;
+  border: 0 !important;
+  @include no-pseudo();
+  .num-hearts {
+    @include fp-border-radius(2px);
+    display: block;
+    background: $white;
+    width: 100%;
+    min-height: 20px;
+    padding: $default-spacing/8 0;
+    &:before {
+      content: '';
+      display: inline-block;
+      position: relative;
+      top: $default-spacing/8;
+      margin-right: $default-spacing/4;
+    }
+    font-size: rem-calc(18px);
+    line-height: rem-calc(18px);
+    color: $pink;
+  }
+}

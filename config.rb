@@ -1,5 +1,8 @@
+add_import_path "node_modules/foundation5-sass/scss"
+add_import_path "client/src/scss"
+
 preferred_syntax = :scss
-output_style = :expanded
+output_style = :compressed
 relative_assets = true
 line_comments = false
 http_path = "/"

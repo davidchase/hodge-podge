@@ -1,0 +1,10 @@
+@import "main/helpers/settings";
+@import "main/helpers/functions";
+@import "main/helpers/mixins";
+
+.product--options--giftcard {
+  h2 {
+    margin: 0;
+    padding: 0;
+  }
+}

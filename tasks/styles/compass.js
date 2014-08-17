@@ -3,14 +3,14 @@
 var gulp = require('gulp');
 var compass = require('gulp-compass');
 
-gulp.task('compass', function() {
-    return gulp.src('./client/src/**/*.scss')
+gulp.task('compass', function () {
+    return gulp.src('./client/src/scss/*.scss')
         .pipe(compass({
             css: './client/dist/css',
-            scss: './client/src/scss'
+            sass: './client/src/scss'
         }))
-        .on('error', function(err) {
+        .on('error', function (err){
             console.log(err);
         })
-        .pipe(gulp.dest('./public/css'));
+        .pipe(gulp.dest('./client/dist/css'));
 });

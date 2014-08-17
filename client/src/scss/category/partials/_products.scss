@@ -1,0 +1,44 @@
+@import "main/helpers/settings";
+@import "main/helpers/functions";
+@import "main/helpers/mixins";
+
+.category-product {
+  width: 140px;
+  padding-bottom: calc-ems($default-spacing * 2);
+  .columns {
+    padding: 0;
+    margin: 0;
+  }
+  &.is-fullscreen {
+    width: 290px;
+  }
+  a {
+    border: 0;
+    color: $gray;
+  }
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+// product title
+.category-product--title {
+  a {
+    font-size: rem-calc(15);
+    color: $dark-gray;
+  }
+}
+
+// swatches
+.category-product--swatches {
+  margin-top: calc-ems($default-spacing/2);
+  > li {
+    margin: calc-ems(0 0 0 $default-spacing/4);
+    @include circle($dark-gray, $default-spacing * 2);
+    &:first-child {
+      margin: 0;
+    }
+  }
+}

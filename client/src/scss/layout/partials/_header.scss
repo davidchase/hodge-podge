@@ -1,0 +1,126 @@
+@import "main/helpers/settings";
+@import "main/helpers/mixins";
+@import "compass/css3";
+
+// header
+header[role="touch"] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  @include transparentBg($white, .9);
+}
+
+.header {
+  padding: $default-spacing/2 0;
+  @include box-shadow(0 1px 6px $light-gray);
+  max-width: 100%;
+  a {
+    display: block;
+    position: relative;
+    @include no-pseudo();
+  }
+}
+
+// hamburger icon
+.header--menu {
+  top: $default-spacing/4;
+  width: 30px;
+  height: 20px;
+  @include transform(rotate(0deg));
+  @include transition(.5s ease-in-out);
+  span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: $pink;
+    @include fp-border-radius();
+    opacity: 1;
+    left: 0;
+    @include transform(rotate(0deg));
+    @include transition(.25s ease-in-out);
+    @include transform-origin(left center);
+    // position spans
+    &:nth-child(1) {
+      top: 0;
+    }
+    &:nth-child(2) {
+      top: $default-spacing/2;
+    }
+    &:nth-child(3) {
+      top: $default-spacing;
+    }
+  }
+  &.is-open {
+    span:nth-child(1) {
+      @include transform(rotate(45deg));
+      top: -$default-spacing/4;
+      left: $default-spacing/2;
+    }
+    span:nth-child(2) {
+      width: 0%;
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      @include transform(rotate(-45deg));
+      top: $default-spacing;
+      left: $default-spacing/2;
+    }
+  }
+}
+
+// logo
+.header--logo {
+  width: 124px;
+  height: 25px;
+  background: {
+    image: url($logo);
+    repeat: no-repeat;
+    size: contain;
+  }
+}
+
+// cart items
+.header--num-cart-items, .header--next {
+  @include fp-border-radius();
+  padding: $default-spacing/4;
+  background: $pink;
+  span {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    color: $white;
+  }
+  // cart icon
+  .cart-icon {
+    // TODO: need basket sprite
+    margin-right: calc-ems($default-spacing/2);
+    margin-bottom: calc-ems(-2);
+  }
+  // next button
+  .next-arrow {
+    // TODO: need >> sprite
+    margin-left: calc-ems($default-spacing/2);
+    margin-bottom: calc-ems(-2);
+  }
+}
+
+.sub-header {
+  padding-top: calc-ems($default-spacing * 2);
+  &.is-cart {
+    padding-top: 0;
+    padding-bottom: calc-ems($default-spacing / 2);
+    @include hand-touched-border($htb-light-gray, $light-gray);
+    border: {
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+    span {
+      font-style: normal;
+      margin: calc-ems(0 0 0 $default-spacing/4);
+    }
+  }
+}

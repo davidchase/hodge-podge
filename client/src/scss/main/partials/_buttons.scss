@@ -1,0 +1,57 @@
+/**
+ * Styles for buttons
+ */
+
+@import "../helpers/settings";
+@import "../helpers/mixins";
+@import "compass/css3";
+
+.btn {
+  display: inline-block;
+  margin: 0 3px;
+  position: relative;
+  border: 0;
+  background: $white;
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: solid 1px transparent;
+    @include hand-touched-border($htb-pink, $pink);
+  }
+  padding: $default-spacing/2;
+  @include rem-sizer(12px);
+  text: {
+    align: center;
+    transform: uppercase;
+  }
+  @include transition(all .25s);
+}
+
+// submit
+.pink-button {
+  @extend .btn;
+  background: $pink;
+  color: $white;
+  &:hover {
+    background: darken($pink, 5%);
+  }
+}
+
+button {
+  @extend .pink-button;
+}
+
+.white-button {
+  @extend .btn;
+  background: $white;
+  color: lighten($pink, 10%);
+  &:hover {
+    color: darken($pink, 10%);
+    background: $white;
+  }
+}
