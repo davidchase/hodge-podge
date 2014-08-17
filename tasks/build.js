@@ -1,2 +1,2 @@
 var gulp = require('gulp');
-gulp.task('build', ['compass', 'vendor', 'browserify', 'uglify', 'lint']);
+gulp.task('build', ['compass', 'vendor', 'browserify', 'uglify', 'lint', 'jsdocs']);
