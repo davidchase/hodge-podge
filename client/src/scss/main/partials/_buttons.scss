@@ -24,7 +24,7 @@
     @include hand-touched-border($htb-pink, $pink);
   }
   padding: $default-spacing/2;
-  @include rem-sizer(14px);
+  @include rem-sizer(12px);
   text: {
     align: center;
     transform: uppercase;

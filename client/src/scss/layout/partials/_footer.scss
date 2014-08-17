@@ -1,0 +1,11 @@
+@import "main/helpers/settings";
+@import "main/helpers/mixins";
+
+.csr-copyright {
+  border-top: solid 1px lighten($light-gray, 15%);
+  margin: calc-ems($default-spacing * 2) 0;
+}
+
+.customer-service {
+  padding-top: calc-ems($default-spacing);
+}

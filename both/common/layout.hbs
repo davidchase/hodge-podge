@@ -3,41 +3,49 @@
     <head>
         <meta charset="utf-8">
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1.0">
         <title>Checkout Flow</title>
-        <!-- Just for the POC -->
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/css/foundation.min.css">
-        <!-- End Just for the POC -->
+        <link rel="stylesheet" href="./static/css/main.css" />
     </head>
     <body>
-        <div class="row">
-            <div class="large-12 columns">
-                <nav class="top-bar">
-                    <secton class="top-bar-section">
-                     <ul class="right">
-                      <li><a href="#"><strong class="basket-count">{{totalCartCount}}</strong> - Items in Basket</a></li>
-                    </ul>
-                    <ul class="left">
-                        <li>
-                            <a href="/basket">Basket</a>
-                        </li>
-                        <li>
-                            <a href="/shipping">Shipping</a>
-                        </li>
-                    </ul>
 
+        <header role="touch">
+            <div class="header">
+                <div class="row">
+                    <div class="large-3 columns"></div>
+                    <div class="large-6 columns"></div>
+                    <div class="large-3 columns">
+                        <a class="header--num-cart-items right" href="/basket">
+                            <span class="cart-icon"></span>
+                            <span class="cart-num-items  basket-count">({{totalCartCount}})</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-                    </secton>
-                   
-                </nav>
+        <div id="shell" class="center">
+            <div id="wrapper">
+                <div class="main-content row">
+                    <div id="container" class="large-12 columns" data-site="{{siteData}}">
+                        <h2 class="text-center">{{site.name}}</h2>
+                        {{{ content }}}
+                    </div>
+                </div>
+                <section class="csr-copyright">
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <div class="customer-service">
+                                <div class="copyright">
+                                    <span class="copyright--text">&copy;2014 FreePeople.com. All rights reserved.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
-            <div id="container" class="large-12 columns" data-site="{{siteData}}">
-                {{{ content }}}
-            </div>
-            <footer class="large-12 columns">
-                &copy; 2014
-            </footer>
         </div>
+
         <script src="./static/js/vendor-bundle.js"></script>
         <script src="./static/js/app.js"></script>
     </body>

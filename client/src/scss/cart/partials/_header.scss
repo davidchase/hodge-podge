@@ -21,4 +21,9 @@
       border: 0;
     }
   }
+
+  // small media query
+  @media #{$small-only} {
+    margin-top: calc-ems($default-spacing * 2);
+  }
 }

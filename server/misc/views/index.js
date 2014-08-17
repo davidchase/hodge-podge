@@ -8,7 +8,7 @@ module.exports = {
     },
     staticFiles: {
         method: 'GET',
-        path: '/static/js/{filename?}',
+        path: '/static/{dir}/{filename?}',
         config: miscCtrl.staticFiles
     },
     missing: {

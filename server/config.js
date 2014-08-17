@@ -10,10 +10,10 @@ module.exports = {
         debug: {
             request: ['error']
         },
-        cache: {
-            engine: require('catbox-memory'),
-            expiresAt: '00:24'
-        },
+        //cache: {
+        //    engine: require('catbox-memory'),
+        //    expiresAt: '00:24'
+        //},
         cors: true,
         views: {
             engines: {
@@ -22,7 +22,7 @@ module.exports = {
             path: './both/',
             layoutPath: './both/common/',
             layout: true,
-            isCached: true
+            isCached: false
         },
         security: true
     }
