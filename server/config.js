@@ -23,7 +23,8 @@ module.exports = {
             layoutPath: './both/common/',
             layout: true,
             isCached: true
-        }
+        },
+        security: true
     }
 
 };

@@ -1,0 +1,15 @@
+@import "main/helpers/settings";
+@import "main/helpers/functions";
+@import "main/helpers/mixins";
+
+.product--buttons {
+  button {
+    width: 98%;
+    margin-bottom: calc-ems($default-spacing);
+  }
+}
+
+.product--wishlist-link {
+  display: inline-block;
+  @include no-pseudo();
+}

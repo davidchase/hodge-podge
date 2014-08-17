@@ -1,0 +1,77 @@
+/**
+ * Styles for forms and form field input elements excluding buttons
+ */
+
+@import "../helpers/settings";
+@import "../helpers/mixins";
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+input, textarea {
+  -webkit-appearance: none;
+  outline: 0;
+  @include hand-touched-border($htb-med-gray, $gray);
+  padding: calc-ems($default-spacing * 3/4);
+  margin: 0 0 1em 0;
+  /*
+  &:hover {
+    @include hand-touched-border($htb-dark-gray, $dark-gray);
+    padding: calc-ems($default-spacing/2);
+  }
+  */
+  &:focus {
+    @include hand-touched-border($htb-pink, $pink);
+  }
+}
+
+input {
+  &[type=radio],
+  &[type=checkbox] {
+    &:focus {
+      border-image: none;
+    }
+  }
+}
+
+label {
+  &.required {
+    &::after {
+      content: '*';
+      display: inline-block;
+      color: $pink;
+      padding-left: calc-ems($default-spacing/4);
+    }
+  }
+}
+
+.label-text-field {
+  label {
+    display: inline;
+  }
+  input {
+    border: 0;
+    padding: 0;
+    margin: calc-ems(0 0 0 $default-spacing/4);
+    font-weight: 600;
+    display: inline-block;
+    width: auto;
+    text-transform: capitalize;
+  }
+  span {
+    position: relative;
+    font-weight: 600;
+    &.displayText {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: calc-ems($default-spacing/4);
+      z-index: 2;
+      width: 100%;
+      background-color: $white;
+    }
+  }
+}

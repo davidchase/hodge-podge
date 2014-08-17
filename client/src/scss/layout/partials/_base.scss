@@ -1,0 +1,17 @@
+@import "main/helpers/functions";
+@import "main/helpers/settings";
+
+#shell {
+  height: 100%;
+}
+
+.main-content {
+  position: relative;
+  padding: calc-ems($default-spacing * 4) 0;
+  background-color: $white;
+  height: 100%;
+  overflow: hidden;
+  &.has-searchbar {
+    padding: calc-ems(($default-spacing * 7) 0 ($default-spacing * 4) 0);
+  }
+}

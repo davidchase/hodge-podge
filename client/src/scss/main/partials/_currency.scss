@@ -1,0 +1,38 @@
+/**
+ * Styles for product pricing and currency
+ */
+
+@import "../helpers/settings";
+@import "foundation/functions";
+@import "compass/css3";
+
+.price {
+  font-family: $sans-serif;
+  letter-spacing: 1px;
+  color: $gray;
+  font-size: rem-calc(18px);
+  &.in-basket {
+    display: inline-block;
+    font-size: rem-calc(14px);
+    padding-bottom: calc-ems($default-spacing/2);
+  }
+}
+
+.price--is {
+  font-weight: 500;
+}
+
+.price--was {
+  &:before {
+    content: 'was ';
+  }
+  display: inline-block;
+  @include border-radius($default-spacing * 4);
+  padding: 0 round($default-spacing / 2);
+  background: lighten($light-gray, 15%);
+  color: $gray;
+  font-size: rem-calc(10px) !important;
+  position: relative;
+  bottom: 3px;
+  left: $default-spacing/2;
+}

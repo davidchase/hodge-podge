@@ -1,0 +1,25 @@
+@import "main/helpers/settings";
+@import "main/helpers/mixins";
+
+.signin--details,
+.signup--details,
+.lostpass--details {
+  h2 {
+    margin: 0 0 calc-ems($default-spacing);
+  }
+  input[type=text] {
+    background-color: $off-white;
+  }
+}
+
+.signin--button {
+  text-transform: capitalize;
+  width: 98%;
+  margin-bottom: calc-ems($default-spacing);
+}
+
+label[for=offers] {
+  float: right;
+  width: 84%;
+  margin-bottom: calc-ems($default-spacing);
+}

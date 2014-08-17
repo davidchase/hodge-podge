@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+// foundation
+@import "normalize";
+@import "foundation/components/grid";
+@import "foundation/components/visibility";
+
+// free people main styles
+@import "main/partials/base";
+@import "main/partials/headings";
+@import "main/partials/breadcrumb";
+@import "main/partials/pagination";
+@import "main/partials/links";
+@import "main/partials/skins";
+@import "main/partials/buttons";
+@import "main/partials/forms";
+@import "main/partials/currency";
+@import "main/partials/toggle";
+@import "main/partials/alerts";
+@import "main/partials/promos";
+
+// page layout common styles
+@import "layout/partials/base";
+@import "layout/partials/header";
+@import "layout/partials/utility";
+
+// page templates
+@import "category/category";
+@import "product/product";
+@import "cart/cart";
+@import "signin/signin";
+@import "checkout/checkout";

@@ -1,0 +1,16 @@
+@import "../helpers/settings";
+@import "../helpers/functions";
+@import "../helpers/mixins";
+
+.pagination {
+  padding: calc-ems(22px 0);
+  a {
+    color: $dark-gray;
+    font: {
+      size: rem-calc(15);
+      style: italic;
+    }
+    border: 0;
+    @include no-pseudo();
+  }
+}
