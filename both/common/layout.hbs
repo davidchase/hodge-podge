@@ -5,7 +5,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Checkout Flow</title>
-        <link rel="stylesheet" href="./static/css/main.css">
+        <link rel="stylesheet prefetch" href="./static/css/main.css">
     </head>
     <body>
         <div class="row">
@@ -13,19 +13,45 @@
                 <nav class="top-bar">
                     <section class="top-bar-section">
                      <ul class="right">
-                      <li><a href="#">Shopping Basket 
-                      <strong class="basket-count">{{totalCartCount}}</strong>
-                      </a></li>
+                      <li>
+                      <a href="#">Shopping Basket 
+                        <strong class="basket-count">{{totalCartCount}}</strong>
+                      </a>
+                      </li>
                     </ul>
                     </section>
-                   
                 </nav>
             </div>
             <header>
-                <h1 class="site-title">{{site.name}}</h1>
+               <div class="row">
+                <div class="large-6 columns">
+                    <h1 class="site-title">{{site.name}}</h1>
+                </div>
+                <div class="large-2 columns">
+                    <div id="action-button" class="action hide">
+                     <a class="" href="{{action.url}}">
+                        <button class="button small action">{{action.label}}</button>
+                    </a>
+                    </div>
+                </div>
+               </div>
             </header>
             <div id="container" class="large-12 columns" data-site="{{siteData}}">
                 {{{ content }}}
+            </div>
+             <div class="cart--summary">
+                <div class="row light-gray-bg">
+                    <div class="large-6 columns">Shipping:</div> 
+                     <div class="large-6 columns text-right"><strong>{{basket.pricing.shipping}}</strong></div> 
+                </div>
+                <div class="row light-gray-bg">
+                    <div class="large-6 columns"> Tax: </div> 
+                    <div class="large-6 columns text-right"><strong>{{basket.pricing.tax}}</strong></div> 
+                </div>
+                <div class="row">
+                    <div class="large-6 columns">Total:</div> 
+                    <div class="large-6 columns text-right">$<strong class="price-total">{{basket.pricing.total}}</strong></div> 
+                 </div>
             </div>
             <footer class="large-12 columns">
                 &copy; 2014

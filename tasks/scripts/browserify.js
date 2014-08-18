@@ -6,8 +6,7 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var ugilfy = require('gulp-uglify');
 var index = [
-        './client/src/basket/views',
-        './client/src/common/header'
+        './client/src/'
         ];
 var libs = require('./vendor').libs;
 var html = require('hbsfy');

@@ -1,9 +1,5 @@
 <div class="basket-sector">
     <h2>my shopping basket</h2>
- {{!--    <div class="right">
-        <h3>Sidebar</h3>
-        <p>Basket total {{basket.pricing.amount}}</p>
-    </div> --}}
     {{#if basket.items}}
         {{#each basket.items}}
             <div class="row  basket--product">
@@ -23,26 +19,17 @@
                 </div>
                 <div class="large-6 column">
                     <div class="pane">
-                        <button class="btn-actions" data-price="{{price}}" data-quantity={{quantity}} data-index={{@index}} >Save For Later</button>
-                        <button class="btn-actions remove-item" data-quantity={{quantity}} data-index={{@index}} >Remove Item</button>
+                        <button class="btn-actions" data-quantity={{quantity}} data-index={{@index}} >
+                            Save For Later
+                        </button>
+                        <button class="btn-actions remove-item"  data-price="{{price}}" data-quantity={{quantity}} data-index={{@index}} >
+                            Remove Item
+                        </button>
                     </div>
                 </div>
             </div>
         {{/each}}
-         <div class="cart--summary">
-            <div class="row light-gray-bg">
-                <div class="large-6 columns">Shipping:</div> 
-                 <div class="large-6 columns text-right"><strong>{{basket.pricing.shipping}}</strong></div> 
-            </div>
-            <div class="row light-gray-bg">
-                <div class="large-6 columns"> Tax: </div> 
-                <div class="large-6 columns text-right"><strong>{{basket.pricing.tax}}</strong></div> 
-            </div>
-            <div class="row">
-                <div class="large-6 columns">Total:</div> 
-                <div class="large-6 columns text-right"> <strong>${{basket.pricing.total}}</strong></div> 
-             </div>
-        </div>
+       
     {{else}}
         <div class="row">
             <div class="large-3 large-centered columns">

@@ -3,13 +3,20 @@ var basketService = require('../services');
 var siteConfig = {
     "FP": {
         "name": "Free People",
-        "displayGiftWrap": true
+        "displayGiftWrap": true,
+        "action": {
+            label: 'Checkout',
+            url: '/shipping'
+        }
     },
     "Anthro": {
         "name": "Anthropologie",
-        "displayGiftWrap": false
-
-    }
+        "displayGiftWrap": false,
+        "action": {
+            label: 'Express Checkout',
+            url: '/review'
+        }
+    },
 };
 module.exports = {
     handler: function(request, reply) {
@@ -21,7 +28,8 @@ module.exports = {
                     basket: response.entity,
                     totalCartCount: response.entity.totalCartCount,
                     site: site,
-                    siteData: JSON.stringify(site)
+                    siteData: JSON.stringify(site),
+                    action: site['action']
                 });
             })
             .otherwise(function(response) {
