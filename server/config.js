@@ -11,10 +11,12 @@ module.exports = {
             request: ['error']
         },
         cache: {
-            engine: require('catbox-memory'),
-            expiresAt: '00:24'
+            engine: require('catbox-memory')
         },
         cors: true,
+        files: {
+            etagsCacheMaxSize: 50000
+        },
         views: {
             engines: {
                 hbs: require('handlebars')

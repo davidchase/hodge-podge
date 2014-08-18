@@ -1,0 +1,42 @@
+@import "main/helpers/settings";
+@import "main/helpers/mixins";
+@import "sprites/retina";
+
+.video-icon {
+  position: absolute;
+  z-index: 9;
+  bottom: 0;
+  left: -16%;
+  width: 0;
+  height: 0;
+  @include no-pseudo();
+  border: {
+    left: round($default-spacing * 4) solid transparent;
+    right: round($default-spacing * 5) solid transparent;
+    bottom: round($default-spacing * 4) solid $white;
+    top: 0;
+  }
+  &:hover {
+    border: {
+      left: round($default-spacing * 4) solid transparent;
+      right: round($default-spacing * 5) solid transparent;
+      bottom: round($default-spacing * 4) solid $white;
+      top: 0;
+    }
+  }
+  @media only screen and (orientation: landscape) {
+    left: -9%;
+  }
+}
+
+.video-icon--wrapper {
+  position: relative;
+  .video-icon--play-btn {
+    position: absolute;
+    top: 1.5em;
+    left: 0;
+    z-index: 2;
+    @include sprite($icon-video-pdp);
+    @include sprite2x($icon-video-pdp2x);
+  }
+}

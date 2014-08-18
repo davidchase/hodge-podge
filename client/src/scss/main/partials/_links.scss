@@ -1,0 +1,53 @@
+/**
+ * Enhanced styles for inline links
+ */
+
+@import "../helpers/settings";
+@import "../helpers/functions";
+@import "../helpers/mixins";
+
+a {
+  // small version
+  &.small {
+    @include rem-sizer(10px);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  // large version
+  &.large {
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  // serif version
+  &.serif {
+    font-family: $serif;
+  }
+  // off-screen links
+  &.offscreen-nav {
+    display: block;
+    width: 100%;
+    padding: calc-ems(15);
+    border: {
+      top: 0;
+      right: 0;
+      bottom: solid 1px $light-gray;
+      left: 0;
+    }
+    font: {
+      family: serif;
+      style: italic;
+    }
+    @include rem-sizer(17px);
+    text-transform: capitalize;
+    color: $dark-gray;
+  }
+  // catalog offscree-links
+  &.catalog--link {
+    display: block;
+    padding: rem-calc(5) 0 rem-calc(10);
+    font: {
+      family: $sans-serif;
+      size: rem-calc(15);
+    }
+  }
+}

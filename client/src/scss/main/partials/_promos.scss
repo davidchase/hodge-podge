@@ -1,0 +1,25 @@
+@import "../helpers/settings";
+@import "../helpers/functions";
+@import "../helpers/mixins";
+
+.promos {
+  margin: calc-ems($default-spacing 0 0);
+  padding: calc-ems(0 $default-spacing/2 $default-spacing/2 $default-spacing/2);
+  .promo {
+    background: $white;
+    @include hand-touched-border($img: $htb-pink, $color: $pink);
+  }
+  .promo--more {
+    margin: calc-ems($default-spacing/2 $default-spacing/2 $default-spacing/2 0);
+  }
+  h2 {
+    color: $pink;
+  }
+  h3 {
+    margin: 0;
+  }
+  // toppers
+  &.topper .promo {
+    border: 0;
+  }
+}

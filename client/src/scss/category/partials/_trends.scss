@@ -1,0 +1,8 @@
+@import "main/helpers/functions";
+@import "main/helpers/settings";
+
+.trends--column {
+    img {
+        margin: calc-ems($default-spacing / 2) 0;
+    }
+}

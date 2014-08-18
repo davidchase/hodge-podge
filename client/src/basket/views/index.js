@@ -3,7 +3,8 @@ var basketService = require('../../../../server/basket/services');
 var pubsub = require('../../common/pubsub');
 var template = require('../../../../both/basket/views/index.hbs');
 var container = document.getElementById('container');
-var siteConfig = JSON.parse(container.getAttribute('data-site'));
+var siteData = container.getAttribute('data-site');
+var siteConfig = siteData !== '' && JSON.parse(siteData);
 var gift = container.querySelector('.gift-wrap');
 
 if (siteConfig && siteConfig.displayGiftWrap) {

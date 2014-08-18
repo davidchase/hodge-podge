@@ -1,0 +1,43 @@
+@import "main/helpers/settings";
+@import "main/helpers/functions";
+@import "main/helpers/mixins";
+
+.continent {
+  h2 {
+    margin-bottom: 0;
+  }
+}
+
+.countries {
+  margin: 0;
+  padding: 0;
+  display: table;
+  width: 100%;
+  @include hand-touched-border($htb-med-gray, $gray);
+}
+
+.country {
+  border-top: solid 1px lighten($light-gray, 15%);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  &:first-child {
+    border-top: 0;
+  }
+  div {
+    display: table-cell;
+    vertical-align: middle;
+    padding: calc-ems($default-spacing $default-spacing/2);
+  }
+  .info > h3 {
+    margin: 0;
+    padding: 0;
+  }
+  &.active {
+    background: lighten($light-gray, 15%);
+  }
+}
+
+.countrysuggest {
+  margin-top: calc-ems($default-spacing);
+}

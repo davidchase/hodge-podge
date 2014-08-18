@@ -1,0 +1,90 @@
+@import "foundation/functions";
+@import "settings";
+@import "functions";
+@import "compass/css3";
+
+@mixin rem-sizer($pixels: $base-font-size, $property: font-size) {
+  #{$property}: $pixels;
+  #{$property}: rem-calc($pixels);
+}
+
+@mixin hand-touched-border($img: $htb-dark-gray, $color: $dark-gray) {
+  border: $color solid 1px;
+  // border-image: url($img) 1 1 repeat;
+}
+
+// circle
+@mixin circle($bg-color, $size) {
+  display: block;
+  width: $size;
+  height: $size;
+  @include border-radius(50%);
+  background: $bg-color;
+  border: solid 1px $bg-color;
+  text-align: center;
+  overflow: hidden;
+}
+
+// generate instrinsic ratio
+@mixin pad-ratio($x, $y, $selector: img) {
+  position: relative;
+  height: 0;
+  padding: 0 0 percentage($y / $x) 0;
+  #{$selector} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// input placeholder
+@mixin input-placeholder($color) {
+  &::-webkit-input-placeholder {
+    color: #{$color};
+  }
+  &:-moz-placeholder { /* Firefox 18- */
+    color: #{$color};
+  }
+  &::-moz-placeholder {  /* Firefox 19+ */
+    color: #{$color};
+  }
+  &:-ms-input-placeholder {
+    color: #{$color};
+  }
+}
+
+@mixin transforms-transition($transition, $webkit-transition) {
+  transition: #{$transition};
+  -webkit-transition: #{$webkit-transition};
+}
+
+@mixin fp-border-radius($radius: 3px) {
+  @include border-radius($radius);
+}
+
+@mixin no-pseudo() {
+  &:hover {
+    text-decoration: none;
+    border: 0;
+  }
+  &:visited {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+@mixin transparentBg($hexColor, $decimal) {
+  background: $hexColor;
+  background: rgba($hexColor, $decimal);
+}
+
+@mixin alert-box($color, $bgColor, $shadow: true) {
+  color: $color;
+  background: $bgColor;
+  border: solid 1px $bgColor;
+  @if $shadow {
+    @include box-shadow($light-gray 0 2px 3px);
+  }
+}

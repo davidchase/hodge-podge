@@ -1,0 +1,52 @@
+@import "main/helpers/settings";
+@import "main/helpers/functions";
+
+.checkout-details {
+  .product--options {
+    background-color: $tan;
+    border-image: none;
+    border: 0;
+    margin: calc-ems($default-spacing/2);
+    padding: calc-ems($default-spacing) calc-ems($default-spacing) calc-ems($default-spacing/2);
+  }
+
+  h2 {
+    display: inline-block;
+  }
+
+  label > span {
+    margin-left: calc-ems($default-spacing);
+  }
+
+  .dropdown-trigger {
+    font-weight: normal;
+    padding: calc-ems($default-spacing/2) calc-ems($default-spacing);
+    padding-right: calc-ems($default-spacing*2);
+    margin-bottom: calc-ems($default-spacing/3);
+  }
+
+  span[data-toggle] {
+    margin-top: calc-ems($default-spacing/2);
+  }
+
+  [type=month] {
+    &:before {
+      content: 'mm/yy';
+      display: block;
+    }
+
+    text-transform: uppercase;
+
+    &::-webkit-datetime-edit {
+      position: absolute;
+      left: -1000px;
+    }
+    &::-webkit-inner-spin-button {
+      display: none;
+    }
+  }
+}
+
+.current-creditcard {
+  color: $light-gray;
+}

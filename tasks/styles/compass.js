@@ -7,7 +7,7 @@ gulp.task('compass', function() {
     return gulp.src('./client/src/**/*.scss')
         .pipe(compass({
             css: './client/dist/css',
-            scss: './client/src/scss'
+            sass: './client/src/scss'
         }))
         .on('error', function(err) {
             console.log(err);

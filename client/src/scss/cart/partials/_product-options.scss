@@ -1,0 +1,23 @@
+@import "main/helpers/settings";
+@import "main/helpers/functions";
+@import "main/helpers/mixins";
+
+.basket--line-items {
+  @include hand-touched-border($htb-light-gray, $light-gray);
+  border: {
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+}
+
+.basket--productOptions {
+  fieldset, button {
+    margin: calc-ems($default-spacing/2) 0;
+  }
+}
+
+.basket-save-links {
+  padding: calc-ems($default-spacing/2) 0;
+  font-weight: 500;
+}

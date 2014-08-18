@@ -1,0 +1,102 @@
+/**
+ * Base styles for typography and standard html elements
+ */
+
+@import "compass/css3/box-sizing";
+@import "../helpers/settings";
+@import "../helpers/functions";
+@import "../helpers/mixins";
+
+// apply a natural box layout model to all elements
+*, *:before, *:after {
+  @include box-sizing(border-box);
+}
+
+html {
+  height: 100%;
+}
+
+.base-font {
+  font-family: $sans-serif;
+  @include rem-sizer(13px);
+  line-height: $base-line-height;
+  letter-spacing: calc-ems(0.5px);
+  color: $gray;
+}
+
+.sans-serif {
+  font-family: $sans-serif;
+}
+
+.serif {
+  font-family: $serif;
+}
+
+// body content
+body {
+  @extend .base-font;
+  height: 100%;
+}
+
+p {
+  @extend .base-font;
+  margin: calc-ems($default-spacing/2) 0;
+}
+
+b, strong {
+  font-weight: 600;
+}
+
+// links
+a {
+  @extend .base-font;
+  color: $pink;
+  text-decoration: none;
+  // hover
+  &:hover {
+    color: $pink;
+    text-decoration: none;
+    border-bottom: solid 1px $pink;
+  }
+  // visited
+  &:visited {
+    color: $indigo;
+    text-decoration: none;
+  }
+}
+
+// navigation
+nav {
+  @extend .base-font;
+  @include rem-sizer(17px);
+  // don't show visited pseudo class for nav links
+  a:visited {
+    color: $pink;
+  }
+}
+
+// captions
+caption {
+  @extend .base-font;
+  @include rem-sizer(11px);
+}
+
+// forms
+button {
+  @extend .base-font;
+  font-weight: 600;
+  @include rem-sizer(15px);
+  outline: none;
+}
+
+input, textarea {
+  width: 100%;
+  @extend .base-font;
+  outline: none;
+  margin: 0;
+}
+
+label {
+  display: block;
+  @extend .base-font;
+}

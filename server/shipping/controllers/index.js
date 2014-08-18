@@ -6,6 +6,6 @@ module.exports = {
     },
     cache: {
         privacy: 'public',
-        expiresAt: '00:24'
+        expiresIn: 864 * 31 * 100 * 1000
     }
 };

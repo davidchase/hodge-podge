@@ -13,12 +13,12 @@ module.exports = {
     staticFiles: {
         handler: {
             file: function(request) {
-                return './client/dist/js/' + request.params.filename;
+                return './client/dist/' + request.params.ext + '/' + request.params.filename
             }
         },
         cache: {
             privacy: 'public',
-            expiresAt: '00:24'
+            expiresIn: 864 * 31 * 100 * 1000
         }
     }
 };

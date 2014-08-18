@@ -1,0 +1,111 @@
+// base utility classes
+@import "foundation/functions";
+@import "compass/css3";
+@import "main/helpers/settings";
+@import "sprites/retina";
+
+@include exports("utility") {
+  .hide-text {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .ellipsis {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }
+
+  .center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .no-scroll {
+    overflow: hidden;
+  }
+
+  .is-fixed {
+    position: fixed !important;
+    z-index: 100;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    @include opacity(.4);
+    background: #000;
+  }
+
+  .no-padding {
+    padding: 0;
+  }
+
+  .invisible {
+    visibility: hidden;
+  }
+
+  .floating-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    > li {
+      float: left;
+    }
+  }
+
+  // >>
+  .more {
+    &:after {
+      content: '\00BB';
+      display: inline-block;
+      margin-left: $default-spacing/4;
+    }
+  }
+
+  // <<
+  .more-left {
+    &:before {
+      display: inline-block;
+      //content: '\00AB';
+      content: '';
+      /*font: {
+        size: em-calc($default-spacing * 1.5);
+      }*/
+      @include sprite($arrows-left-pink);
+      @include sprite2x($arrows-left-pink2x);
+      margin-right: $default-spacing/4;
+    }
+  }
+
+  // >>
+  .more-right {
+    &:after {
+      display: inline-block;
+      //content: '\00AB';
+      content: '';
+      /*font: {
+        size: em-calc($default-spacing * 1.5);
+      }*/
+      @include sprite($arrows-right-pink);
+      @include sprite2x($arrows-right-pink2x);
+      margin-left: $default-spacing/4;
+    }
+  }
+
+  .is-disabled {
+     opacity: 0.5;
+  }
+
+  .is-sold-out {
+    opacity: 0.30;
+  }
+
+  .light-gray-bg {
+    background: lighten($light-gray, 20%);
+  }
+}

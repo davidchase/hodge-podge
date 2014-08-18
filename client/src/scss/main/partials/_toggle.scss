@@ -1,0 +1,55 @@
+@import "../helpers/settings";
+@import "../helpers/functions";
+@import "../helpers/mixins";
+@import "sprites/retina";
+
+// label style
+label.is-toggle {
+  color: $pink;
+  cursor: pointer;
+  display: inline-block;
+}
+
+// hide checkbox
+input.is-toggle {
+  display: none;
+}
+
+// radio icons
+.radio--icon {
+  float: left;
+  position: relative;
+  top: calc-ems(-$default-spacing/4);
+  margin-right: calc-ems($default-spacing/2);
+  @include circle($white, 28px);
+  border: solid 1px $light-gray;
+}
+
+// checkbox toggle
+.check--icon {
+  @extend .radio--icon;
+  border: solid 1px $pink;
+
+  &:checked {
+    @include sprite($radio-checked);
+    @include sprite2x($radio-checked2x);
+    border: 0;
+  }
+
+  + label {
+    padding-top: 3px;
+  }
+}
+
+// hidden content
+input.is-toggle:checked {
+  & ~ [data-toggle] {
+    display: block;
+  }
+
+  & ~ label > h2 > .radio--icon {
+    @include sprite($radio-checked-blue);
+    @include sprite2x($radio-checked-blue2x);
+    border: 0;
+  }
+}

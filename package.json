@@ -9,7 +9,7 @@
         "test": "./node_modules/karma/bin/karma  test/*.spec.js"
     },
     "napa": {
-        "request-promise": "tyabonil/request-promise"
+        "foundation": "zurb/bower-foundation"
     },
     "repository": {
         "type": "git",

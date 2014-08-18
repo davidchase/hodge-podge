@@ -1,0 +1,50 @@
+/**
+ * Styles for alert messaging: success, warning, and error
+ */
+
+@import "../helpers/settings";
+@import "../helpers/mixins";
+
+.alertMsg {
+  position: relative;
+  padding: $default-spacing $default-spacing*2 $default-spacing $default-spacing;
+  border: solid 1px $dark-gray;
+  margin: $default-spacing 0;
+}
+
+// close button: X
+.alert--close {
+  position: absolute;
+  top: $default-spacing/2;
+  right: $default-spacing/2;
+  z-index: 2;
+  @include rem-sizer(18px);
+  text: {
+    transform: uppercase;
+    decoration: none;
+  }
+  color: $dark-gray;
+  &:hover {
+    color: $dark-gray;
+    text-decoration: none;
+    border: 0;
+  }
+}
+
+.alert--close-white {
+  @extend .alert--close;
+  color: $white;
+  &:hover {
+    color: $white;
+  }
+}
+
+.successMsg {
+  @extend .alertMsg;
+  @include alert-box($white, $green);
+}
+
+.errorMsg {
+  @extend .alertMsg;
+  @include alert-box($white, $red);
+}

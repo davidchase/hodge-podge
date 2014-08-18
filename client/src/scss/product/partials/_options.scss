@@ -1,0 +1,68 @@
+@import "main/helpers/settings";
+@import "main/helpers/functions";
+@import "main/helpers/mixins";
+@import "compass/css3";
+@import "sprites/retina";
+
+// product options
+.product--options {
+  margin: $default-spacing 0;
+  @include hand-touched-border($htb-light-gray, $light-gray);
+  padding: $default-spacing;
+  // labels
+  label > span {
+    display: inline-block;
+    margin: calc-ems(0 0 $default-spacing/4 $default-spacing/4);
+    font-weight: 500;
+  }
+  // option sections
+  & > div {
+    margin-bottom: $default-spacing;
+    &:first-child {
+      margin-bottom: $default-spacing/2;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  // swatches
+  .product--options--swatches {
+    li {
+      margin: calc-ems(0 $default-spacing/2 $default-spacing/2 0);
+    }
+    .swatch {
+      @include circle($light-gray, 44px);
+      visibility: visible !important;
+      &.is-selected {
+        @include circle($pink, 44px);
+      }
+      img {
+        background: $white;
+        border: solid 2px transparent;
+        @include border-radius(50%);
+      }
+    }
+  }
+  // inseam length
+  .product--options--inseam {
+    .inseam-length {
+      display: block;
+      border: solid 1px $light-gray;
+      padding: calc-ems($default-spacing/4 0);
+      font-weight: 400;
+      color: $gray;
+      &.is-selected {
+        font-weight: 600;
+        border: solid 1px $pink;
+      }
+    }
+  }
+}
+
+.low-inventory {
+  padding: calc-ems($default-spacing/4 0);
+  margin: calc-ems($default-spacing/4 0);
+  background: lighten($pink, 42%);
+  font-weight: 600;
+  color: $pink;
+}

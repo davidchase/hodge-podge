@@ -1,0 +1,14 @@
+@import "main/helpers/settings";
+@import "main/helpers/functions";
+
+.search-summary {
+  font-style: italic;
+  strong {
+    display: inline-block;
+    margin-left: calc-ems($default-spacing/4);
+  }
+}
+
+.search-results .filtering {
+  margin-bottom: calc-ems($default-spacing);
+}

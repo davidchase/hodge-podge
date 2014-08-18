@@ -1,0 +1,50 @@
+// fonts
+$sans-serif: "Avenir Next", Lato, Helvetica Neue, Helvetica, Arial, sans-serif;
+$serif: "Hoefler Text", Baskerville, "Baskerville old face", Garamond, Times New Roman, serif;
+$base-font-size: 16px;
+$base-line-height: 150%;
+
+// colors
+$red: #df3547;
+$pink: #ff008a;
+$green: #71dd98;
+$blue: #007aff;
+$indigo: #5c66c5;
+$white: #ffffff;
+$off-white: #f7f7f7;
+$tan: #f6f4f2;
+$light-gray: #bebebe;
+$gray: #7e7e7e;
+$dark-gray: #3e3e3e;
+$black: #000000;
+$facebook-blue: #446298;
+
+// spacing
+$default-spacing: 16px;
+
+// textures
+$htb-dark-gray: "/images/textures/1x/htb-dark-gray.png";
+$htb-med-gray: "/images/textures/1x/htb-med-gray.png";
+$htb-light-gray: "/images/textures/1x/htb-light-gray.png";
+$htb-pink: "/images/textures/1x/htb-pink.png";
+$htb-fb: "/images/textures/1x/htb-fb.png";
+
+// grid
+$row-width: rem-calc(1200);
+$column-gutter: rem-calc($default-spacing);
+$total-columns: 12;
+
+// media queries
+$small-range: (0em, 40em);
+$medium-range: (40.063em, 64em);
+$large-range: (64.063em, 90em);
+$xlarge-range: (90.063em, 120em);
+$xxlarge-range: (120.063em);
+
+// flags
+$flags-sprite: '//static.fpassets.com/resources/_shared/images/spritesheets/flags.png';
+
+// reskins
+$logo: "/images/reskins/reskin-july-logo.png";
+$banner: "/images/reskins/reskin-july-banner.jpg";
+$catalog: "/images/reskins/reskin-july-catalog.jpg";

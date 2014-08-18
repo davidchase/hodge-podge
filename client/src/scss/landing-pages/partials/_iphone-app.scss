@@ -1,0 +1,27 @@
+@import "main/helpers/settings";
+@import "main/helpers/functions";
+@import "sprites/retina";
+
+
+.iphone-app--text {
+  margin-top: calc-ems($default-spacing);
+}
+
+.iphone-app--download {
+  @include retinaImg('/images/App-Landing-Mobile-Download-Button.jpg');
+  width: 178px;
+  height: 40px;
+}
+
+.iphone-app--copy {
+  margin-top: calc-ems($default-spacing * 2);
+  @include retinaImg('/images/App-Landing-Mobile-Handwriting.jpg');
+  width: 301px;
+  height: 18em;
+  em {
+    display: inline-block;
+    padding-top: 16em;
+    width: 90%;
+    overflow: visible;
+  }
+}

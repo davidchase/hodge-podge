@@ -1,21 +1,39 @@
-<h2>{{site.name}}</h2>
-<div class="basket-sector">
-    <h3>Basket</h3>
-    <div class="right">
+<div class="basket-sector basket--line-items">
+    <h2>my shopping basket</h2>
+ {{!--    <div class="right">
         <h3>Sidebar</h3>
         <p>Basket total {{basket.pricing.amount}}</p>
-    </div>
+    </div> --}}
     {{#if basket.items}}
         {{#each basket.items}}
-            <a href="#" ><img src="{{imageUrl}}" style="width:8%; height:auto;"></a>
-            <p>Description: {{description}} <button data-quantity={{quantity}} data-index={{@index}} class="button tiny alert remove-item">Remove</button></p>
-            <p>Quantity: {{quantity}} </p>
-            {{#if giftWrappable}}
-                <p class="gift-wrap hide">Gift wrap available</p>
-            {{/if}}
+            <div class="row basket--product">
+                <div class="large-2 columns">
+                    <a href="#"><img src="{{imageUrl}}"></a>
+                </div>
+                <div class="large-4 columns">
+                <p><strong><em>{{displayName}}</em></strong></p>
+                <p><strong>${{price}}</strong></p>
+                <p>Color: <strong>{{color}}</strong></p>
+                <p>Size: <strong>{{size}}</strong></p>
+                <p>Quantity: <strong>{{quantity}}</strong> </p>
+                <p>Style: {{sku}}</p>
+                {{#if giftWrappable}}
+                    <p class="gift-wrap hide">Gift wrap available</p>
+                {{/if}}
+                </div>
+                <div class="large-6 column">
+                    <div class="pane">
+                        <button class="btn-actions" data-quantity={{quantity}} data-index={{@index}} >Save For Later</button>
+                        <button class="btn-actions remove-item" data-quantity={{quantity}} data-index={{@index}} >Remove Item</button>
+                    </div>
+                </div>
+            </div>
         {{/each}}
     {{else}}
-        <p>Basket Is Empty</p>
+        <div class="row">
+            <div class="large-12 columns">
+                <p>Basket Is Empty</p>
+            </div>
+        </div>
     {{/if}}
-    <button class="button small re-render">Get Items Again</button>
 </div>
