@@ -27,13 +27,15 @@
                 <div class="large-6 columns">
                     <h1 class="site-title">{{site.name}}</h1>
                 </div>
-                <div class="large-2 columns">
+                {{#if basket.items}}
+                <div class="large-3 columns">
                     <div id="action-button" class="action hide">
                      <a class="" href="{{action.url}}">
                         <button class="button small action">{{action.label}}</button>
                     </a>
                     </div>
                 </div>
+                {{/if}}
                </div>
             </header>
             <div id="container" class="large-12 columns" data-site="{{siteData}}">

@@ -17,7 +17,7 @@ basketProto.removeItem = function(id) {
     var client = this.rest.wrap(this.mime).wrap(this.errorCode);
     return client({
         method: 'DELETE',
-        path: 'http://localhost:3000/api/data/' + id
+        path: '/api/data/' + id
     });
 };
 

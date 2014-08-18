@@ -1,20 +1,20 @@
 'use strict';
 var basketService = require('../../../../server/basket/services');
-var pubsub = require('../../common/pubsub');
 var template = require('../../../../both/basket/views/index.hbs');
+var pubsub = require('../../common/pubsub');
 
 var container = document.getElementById('container');
 var siteData = container.getAttribute('data-site');
 var siteConfig = siteData !== '' && JSON.parse(siteData);
 
 var BasketCtrl = function() {
+    this.action = document.getElementById('action-button');
     //initialize
     this.applySiteConfig();
     this.showAction();
     this.bindEvents();
     this.updateTotals();
 };
-
 
 var BasketCtrlProto = BasketCtrl.prototype;
 
@@ -30,9 +30,8 @@ BasketCtrlProto.applySiteConfig = function() {
 
 BasketCtrlProto.showAction = function() {
     var products = container.querySelector('.basket--product');
-    var action = document.getElementById('action-button');
-    if (action && products) {
-        action.classList.remove('hide');
+    if (this.action && products) {
+        this.action.classList.remove('hide');
     }
 };
 
@@ -65,8 +64,12 @@ BasketCtrlProto.updateTotals = function() {
     pubsub.subscribe('priceUpdate', function(price) {
         var currentTotal = parseInt(priceTotal.textContent, 10);
         var newTotal = parseInt(price, 10);
-        priceTotal.textContent = currentTotal - newTotal;
-    });
+        var currentBasket = priceTotal.textContent = currentTotal - newTotal;
+        if (currentBasket === 0) {
+            this.action.classList.add('hide');
+        }
+
+    }.bind(this));
 };
 
 BasketCtrlProto.bindEvents = function() {

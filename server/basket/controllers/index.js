@@ -5,16 +5,16 @@ var siteConfig = {
         "name": "Free People",
         "displayGiftWrap": true,
         "action": {
-            label: 'Checkout',
-            url: '/shipping'
+            "label": "Checkout",
+            "url": "/shipping"
         }
     },
     "Anthro": {
         "name": "Anthropologie",
         "displayGiftWrap": false,
         "action": {
-            label: 'Express Checkout',
-            url: '/review'
+            "label": "Express Checkout",
+            "url": "/review"
         }
     },
 };
