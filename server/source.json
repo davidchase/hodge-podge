@@ -32,9 +32,9 @@
     }
   ],
     "pricing": {
-        "amount": 484.0,
-        "shipping": 10.95,
-        "tax": 0,
-        "total": 494.95
+        "amount": 257.95,
+        "shipping": "tbd",
+        "tax": "tbd",
+        "total": 257.95
     }
 }
