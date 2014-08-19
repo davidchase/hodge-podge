@@ -3,12 +3,14 @@ var basketService = require('../../../../server/basket/services');
 var template = require('../../../../both/basket/views/index.hbs');
 var pubsub = require('../../common/pubsub');
 
-var container = document.getElementById('container');
-var siteData = container.getAttribute('data-site');
-var siteConfig = siteData !== '' && JSON.parse(siteData);
+
 
 var BasketCtrl = function() {
     this.action = document.getElementById('action-button');
+    this.container = document.getElementById('container');
+    this.siteData = this.container.getAttribute('data-site');
+    this.siteConfig = this.siteData !== '' && JSON.parse(this.siteData);
+
     //initialize
     this.applySiteConfig();
     this.showAction();
@@ -19,17 +21,17 @@ var BasketCtrl = function() {
 var BasketCtrlProto = BasketCtrl.prototype;
 
 BasketCtrlProto.applySiteConfig = function() {
-    var gift = container.querySelector('.gift-wrap');
+    var gift = this.container.querySelector('.gift-wrap');
     if (!gift) {
         return;
     }
-    if (siteConfig && siteConfig.displayGiftWrap) {
+    if (this.siteConfig && this.siteConfig.displayGiftWrap) {
         gift.classList.remove('hide');
     }
 };
 
 BasketCtrlProto.showAction = function() {
-    var products = container.querySelector('.basket--product');
+    var products = this.container.querySelector('.basket--product');
     if (this.action && products) {
         this.action.classList.remove('hide');
     }
@@ -48,7 +50,7 @@ BasketCtrlProto.removeBasketItem = function(e) {
             var rendered = template({
                 basket: data.entity
             });
-            container.innerHTML = rendered;
+            this.container.innerHTML = rendered;
             this.applySiteConfig();
             this.showAction();
             pubsub.publish('quantityUpdate', quantity);
