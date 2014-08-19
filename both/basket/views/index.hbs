@@ -3,10 +3,10 @@
     {{#if basket.items}}
         {{#each basket.items}}
             <div class="row  basket--product">
-                <div class="large-2 columns ">
+                <div class="medium-2 columns ">
                     <a href="#"><img src="{{imageUrl}}"></a>
                 </div>
-                <div class="large-4 columns">
+                <div class="medium-4 columns">
                 <p><strong><em>{{displayName}}</em></strong></p>
                 <p><strong>${{price}}</strong></p>
                 <p>Color: <strong>{{color}}</strong></p>
@@ -17,7 +17,7 @@
                     <p class="gift-wrap hide">Gift wrap available</p>
                 {{/if}}
                 </div>
-                <div class="large-6 column">
+                <div class="medium-4 column end">
                     <div class="pane">
                         <button class="btn-actions" data-quantity={{quantity}} data-index={{@index}} >
                             Save For Later
@@ -32,7 +32,7 @@
         {{/each}}
     {{else}}
         <div class="row">
-            <div class="large-3 large-centered columns">
+            <div class="medium-3 medium-centered columns">
                 <h2>your basket is currently empty</h2>
             </div>
         </div>

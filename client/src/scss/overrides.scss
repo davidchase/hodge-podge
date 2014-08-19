@@ -11,7 +11,7 @@ ul {
 .pane {
     background: #FAFAFA;
     padding: 54px 34px;
-    width: 62%;
+    width: 100%;
     margin: 7px 0;
 }
 
@@ -27,4 +27,14 @@ ul {
 #action-button {
     margin: 20px 9px 0;
     float: right;
+}
+
+.white-text {
+    &:visited {
+        color: #fff;
+    }
+}
+
+footer {
+    margin: 16px 0;
 }

@@ -9,12 +9,12 @@
     </head>
     <body>
         <div class="row">
-            <div class="large-12 columns">
+            <div class="medium-12 columns">
                 <nav class="top-bar">
                     <section class="top-bar-section">
                      <ul class="right">
                       <li>
-                      <a href="#">Shopping Basket 
+                      <a href="/basket">Shopping Basket 
                         <strong class="basket-count">{{totalCartCount}}</strong>
                       </a>
                       </li>
@@ -23,39 +23,39 @@
                 </nav>
             </div>
             <header>
-               <div class="row">
-                <div class="large-6 columns">
+                <div class="medium-6 columns">
                     <h1 class="site-title">{{site.name}}</h1>
                 </div>
                 {{#if basket.items}}
-                <div class="large-3 columns">
+                <div class="medium-3 columns">
                     <div id="action-button" class="action hide">
-                     <a class="" href="{{action.url}}">
-                        <button class="button small action">{{action.label}}</button>
+                     <a class="pink-button white-text" href="{{action.url}}">
+                        {{action.label}}
                     </a>
                     </div>
                 </div>
                 {{/if}}
-               </div>
             </header>
-            <div id="container" class="large-12 columns" data-site="{{siteData}}">
+            <div id="container" class="medium-12 columns" data-site="{{siteData}}">
                 {{{ content }}}
             </div>
+            {{#if basket.items}}
              <div class="cart--summary">
                 <div class="row light-gray-bg">
-                    <div class="large-6 columns">Shipping:</div> 
-                     <div class="large-6 columns text-right"><strong>{{basket.pricing.shipping}}</strong></div> 
+                    <div class="medium-6 columns">Shipping:</div> 
+                     <div class="medium-6 columns text-right"><strong>{{basket.pricing.shipping}}</strong></div> 
                 </div>
                 <div class="row light-gray-bg">
-                    <div class="large-6 columns"> Tax: </div> 
-                    <div class="large-6 columns text-right"><strong>{{basket.pricing.tax}}</strong></div> 
+                    <div class="medium-6 columns"> Tax: </div> 
+                    <div class="medium-6 columns text-right"><strong>{{basket.pricing.tax}}</strong></div> 
                 </div>
                 <div class="row">
-                    <div class="large-6 columns">Total:</div> 
-                    <div class="large-6 columns text-right">$<strong class="price-total">{{basket.pricing.total}}</strong></div> 
+                    <div class="medium-6 columns">Total:</div> 
+                    <div class="medium-6 columns text-right">$<strong class="price-total">{{basket.pricing.total}}</strong></div> 
                  </div>
             </div>
-            <footer class="large-12 columns">
+            {{/if}}
+            <footer class="medium-12 columns">
                 &copy; 2014
             </footer>
         </div>
