@@ -8,3 +8,4 @@ npm-debug.log
 tmp/log*
 public
 client/dist/js/docs
+sitespeed-result/*
