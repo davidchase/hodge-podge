@@ -1,60 +1,63 @@
 {
-  "name": "hodge-podge",
-  "version": "0.0.2",
-  "description": "Checkout flow with a hapi medium",
-  "main": "server.js",
-  "scripts": {
-    "install": "napa",
-    "start": "node server.js",
-    "test": "zombie"
-  },
-  "napa": {
-    "foundation": "zurb/bower-foundation"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/davidchase/hodge-podge.git"
-  },
-  "keywords": [
+    "name": "hodge-podge",
+    "version": "0.0.2",
+    "description": "Checkout flow with a hapi medium",
+    "main": "server.js",
+    "scripts": {
+        "install": "napa",
+        "start": "node server.js",
+        "test": "mocha test/**/*.spec.js"
+    },
+    "napa": {
+        "foundation": "zurb/bower-foundation"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/davidchase/hodge-podge.git"
+    },
+    "keywords": [
     "checkout",
     "chart",
     "shipping",
     "flow"
   ],
-  "author": "David Annopolsky <dannopolsky@freepeople.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/davidchase/hodge-podge/issues"
-  },
-  "homepage": "https://github.com/davidchase/hodge-podge",
-  "devDependencies": {
-    "browserify": "^4.2.3",
-    "catbox-memory": "^1.0.4",
-    "glob": "^4.0.5",
-    "good": "^2.2.1",
-    "gulp": "^3.8.7",
-    "gulp-compass": "^1.2.0",
-    "gulp-jsdoc": "^0.1.4",
-    "gulp-jshint": "^1.8.4",
-    "gulp-livereload": "^2.1.0",
-    "gulp-nodemon": "^1.0.4",
-    "gulp-uglify": "^0.3.1",
-    "handlebars": "^2.0.0-alpha.4",
-    "hapi": "^6.4.0",
-    "hbsfy": "^2.0.0",
-    "joi": "^4.6.2",
-    "jshint-stylish": "^0.4.0",
-    "mocha": "^1.21.4",
-    "napa": "^0.4.1",
-    "nodemon": "~1.2.1",
-    "partialify": "^3.1.1",
-    "path": "~0.4.9",
-    "rest": "^1.1.1",
-    "should": "^4.0.4",
-    "tap-spec": "^0.2.0",
-    "vinyl-buffer": "0.0.0",
-    "vinyl-source-stream": "^0.1.1",
-    "watchify": "^1.0.1",
-    "zombie": "^2.0.0-alpha31"
-  }
+    "author": "David Annopolsky <dannopolsky@freepeople.com>",
+    "contributors": [
+        "Christian Lohr <clohr@freepeople.com>",
+        "Travis Fraser <tfraser@urbn.com>"
+    ],
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/davidchase/hodge-podge/issues"
+    },
+    "homepage": "https://github.com/davidchase/hodge-podge",
+    "devDependencies": {
+        "browserify": "^4.2.3",
+        "catbox-memory": "^1.0.4",
+        "glob": "^4.0.5",
+        "good": "^2.2.1",
+        "gulp": "^3.8.7",
+        "gulp-compass": "^1.2.0",
+        "gulp-jsdoc": "^0.1.4",
+        "gulp-jshint": "^1.8.4",
+        "gulp-livereload": "^2.1.0",
+        "gulp-nodemon": "^1.0.4",
+        "gulp-uglify": "^0.3.1",
+        "handlebars": "^2.0.0-alpha.4",
+        "hapi": "^6.4.0",
+        "hbsfy": "^2.0.0",
+        "joi": "^4.6.2",
+        "jshint-stylish": "^0.4.0",
+        "mocha": "^1.21.4",
+        "napa": "^0.4.1",
+        "nodemon": "~1.2.1",
+        "path": "~0.4.9",
+        "rest": "^1.1.1",
+        "should": "^4.0.4",
+        "tap-spec": "^0.2.0",
+        "vinyl-buffer": "0.0.0",
+        "vinyl-source-stream": "^0.1.1",
+        "watchify": "^1.0.1",
+        "zombie": "^2.0.0-alpha31"
+    }
 }

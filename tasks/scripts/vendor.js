@@ -5,7 +5,7 @@ var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
-var libs = ['rest', 'rest/interceptor/mime', 'rest/interceptor/errorCode'];
+var libs = ['rest', 'rest/interceptor/mime', 'rest/interceptor/errorCode', 'hbsfy', 'hbsfy/runtime'];
 
 gulp.task('vendor', function() {
     // create external libraries

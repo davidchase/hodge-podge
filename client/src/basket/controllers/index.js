@@ -2,8 +2,15 @@
 var basketService = require('../../../../server/basket/services');
 var template = require('../../../../both/basket/views/index.hbs');
 var pubsub = require('../../common/pubsub');
+var internals = {};
 
-
+internals.removeClass = function(el, className) {
+    if (el.classList) {
+        el.classList.remove(className);
+    } else {
+        el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+    }
+};
 
 var BasketCtrl = function() {
     this.action = document.getElementById('action-button');
@@ -26,14 +33,14 @@ BasketCtrlProto.applySiteConfig = function() {
         return;
     }
     if (this.siteConfig && this.siteConfig.displayGiftWrap) {
-        gift.classList.remove('hide');
+        internals.removeClass(gift, 'hide');
     }
 };
 
 BasketCtrlProto.showAction = function() {
     var products = this.container.querySelector('.basket--product');
     if (this.action && products) {
-        this.action.classList.remove('hide');
+        internals.removeClass(this.action, 'hide');
     }
 };
 
@@ -75,7 +82,10 @@ BasketCtrlProto.updateTotals = function() {
 };
 
 BasketCtrlProto.bindEvents = function() {
-    container.addEventListener('click', this.removeBasketItem.bind(this), false);
+    this.container.addEventListener('click', this.removeBasketItem.bind(this), false);
+    if (!this.container.querySelector('.baskset-sector')) {
+        this.container.removeEventListener('click', this.removeBasketItem.bind(this), false);
+    }
 };
 
 module.exports = new BasketCtrl();

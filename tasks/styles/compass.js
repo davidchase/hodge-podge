@@ -12,5 +12,5 @@ gulp.task('compass', function() {
         .on('error', function(err) {
             console.log(err);
         })
-        .pipe(gulp.dest('./public/css'));
+        .pipe(gulp.dest('./client/dist/css'));
 });
