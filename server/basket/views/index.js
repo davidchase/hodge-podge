@@ -1,7 +1,9 @@
 'use strict';
 var basketCtrl = require('../controllers');
 module.exports = {
-    method: 'GET',
-    path: '/basket',
-    config: basketCtrl
+    basket: {
+        method: 'GET',
+        path: '/basket',
+        config: basketCtrl
+    }
 };

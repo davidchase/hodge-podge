@@ -13,7 +13,7 @@ module.exports = {
     staticFiles: {
         handler: {
             file: function(request) {
-                return './client/dist/' + request.params.ext + '/' + request.params.filename
+                return './client/dist/' + request.params.ext + '/' + request.params.filename;
             }
         },
         cache: {

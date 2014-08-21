@@ -83,9 +83,6 @@ BasketCtrlProto.updateTotals = function() {
 
 BasketCtrlProto.bindEvents = function() {
     this.container.addEventListener('click', this.removeBasketItem.bind(this), false);
-    if (!this.container.querySelector('.baskset-sector')) {
-        this.container.removeEventListener('click', this.removeBasketItem.bind(this), false);
-    }
 };
 
 module.exports = new BasketCtrl();
