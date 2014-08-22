@@ -9,7 +9,6 @@ var path = require('path');
 var getRoutes = glob.sync(path.join(__dirname, '**/views/*.js'));
 var allRoutes = [];
 
-
 module.exports = function(server) {
     var views = [
         basketView.basket,
